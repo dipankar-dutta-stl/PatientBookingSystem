@@ -1,0 +1,188 @@
+<div class="container" style="margin-bottom:10%;">
+
+
+  <div class="alert alert-primary text-center mt-5" role="alert">
+    Your Profile
+  </div>
+  <div class="row g-3 mt-5 " style="background-color: lavenderblush;padding:20px;">
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" id="inputEmail" [(ngModel)]="doctor.dd.email_ID" name="email_ID"
+        disabled>
+    </div>
+    <div class="col-md-6">
+      <label for="inputMobile" class="form-label">Mobile No</label>
+      <input type="text" class="form-control" id="inputMobile" [(ngModel)]="doctor.dd.mobile_NO" name="mobile_NO"
+        [disabled]="disable">
+    </div>
+
+    <div class="col-md-6">
+      <label for="inputFirstName" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="inputFirstName" [(ngModel)]="doctor.dd.first_NAME" name="first_NAME"
+        [disabled]="disable">
+    </div>
+    <div class="col-md-4">
+      <label for="inputLastName" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="inputLastName" [(ngModel)]="doctor.dd.last_NAME" name="last_NAME"
+        [disabled]="disable">
+    </div>
+    <div class="col-md-2">
+      <label for="inputGender" class="form-label">Gender</label>
+      <select id="inputGender" class="form-select" [(ngModel)]="doctor.dd.gender" name="gender" [disabled]="disable">
+        <option selected>Choose...</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label"> Chember Address</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"
+        [(ngModel)]="doctor.dd.chembar_ADDRESS" name="address" [disabled]="disable">
+    </div>
+    <div class="col-md-6">
+      <label for="inputSpecialization" class="form-label">Specialization</label>
+      <select id="inputSpecialization" class="form-select" [(ngModel)]="doctor.dd.specialization" name="specialization"
+        [disabled]="disable">
+        <option selected>Choose...</option>
+        <option value="Orthopedics">Orthopedics</option>
+        <option value="Internal Medicine.">Internal Medicine.</option>
+        <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Pediatrics">Pediatrics</option>
+        <option value="Radiology">Radiology.</option>
+        <option value="General Surgery.">General Surgery.</option>
+        <option value="Family Medicine"> Family Medicine</option>
+        <option value="ENT"> ENT</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="inputTags" class="form-label">Tags</label>
+      <input type="text" class="form-control" id="inputTags" [(ngModel)]="doctor.dd.tags" name="tags"
+        [disabled]="disable">
+    </div>
+    <div class="col-12">
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">DAY</th>
+            <th scope="col">START TIME</th>
+            <th scope="col">END TIME</th>
+            <th scope="col">ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ib of doctor.as">
+            <td><select id="inputState" class="form-select" name="schedule_DAY" value="{{ib.schedule_DAY}}"
+                [disabled]="disableSchedule">
+                <option selected>Choose...</option>
+                <option value="Sunday">Sunday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thruesday">Thruesday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+              </select></td>
+            <td><input type="time" class="form-control" id="inputStartTime1" name="schedule_TIME_START"
+                [(ngModel)]="ib.schedule_TIME_START" [disabled]="disableSchedule"></td>
+            <td><input type="time" class="form-control" id="inputEndTime1" [(ngModel)]="ib.schedule_TIME_END"
+                name="schedule_TIME_END" [disabled]="disableSchedule"></td>
+            <td>
+              &nbsp;
+              <button type="submit" class="btn btn-warning" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" (click)="doEnableEditor(ib)">Edit</button>
+              &nbsp;
+              <button type="submit" class="btn btn-danger" (click)="doDeleteSchedule(ib.id)">Delete</button>
+            </td>
+          </tr>
+          <tr *ngIf="viewAddScheduleForm">
+            <td>
+              <select id="inputState" class="form-select" name="schedule_DAY"
+                [(ngModel)]="appointmentSchedule.schedule_DAY">
+                <option selected>Choose...</option>
+                <option value="Sunday">Sunday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thruesday">Thruesday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+              </select>
+            </td>
+            <td>
+              <input type="time" class="form-control" id="inputStartTime" name="schedule_TIME_START1"
+                [(ngModel)]="appointmentSchedule.schedule_TIME_START">
+            </td>
+            <td>
+              <input type="time" class="form-control" id="inputEndTime" name="schedule_TIME_END1"
+                [(ngModel)]="appointmentSchedule.schedule_TIME_END">
+            </td>
+            <td>
+              &nbsp;
+              <button type="submit" class="btn btn-success" (click)="addAppointmentSchedule()">Save</button>
+              &nbsp;
+              <button type="submit" class="btn btn-danger" (click)="cancelAddAppointmentSchedule()">Cancel</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-warning" (click)="doEditDoctor()">{{button}}</button>
+      &nbsp;&nbsp;
+      <button type="submit" class="btn btn-success" (click)="displayAddScheduleForm()">Add Schedule</button>
+      &nbsp;&nbsp;
+      <button *ngIf="enableCancelButton" type="submit" class="btn btn-danger" (click)="doCancelEdit()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Schedule</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-responsive" style="font-size: small;">
+          <thead>
+            <tr>
+              <th scope="col">DAY</th>
+              <th scope="col">START TIME</th>
+              <th scope="col">END TIME</th>
+              <th scope="col">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><select id="inputState" class="form-select" name="schedule_DAY" [(ngModel)]="appointmentSchedule.schedule_DAY">
+                  <option selected>Choose...</option>
+                  <option value="Sunday">Sunday</option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thruesday">Thruesday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                </select></td>
+              <td><input type="time" class="form-control" id="inputStartTime1" name="schedule_TIME_START" [(ngModel)]="appointmentSchedule.schedule_TIME_START"></td>
+              <td><input type="time" class="form-control" id="inputEndTime1" name="schedule_TIME_END" [(ngModel)]="appointmentSchedule.schedule_TIME_END"></td>
+              <td>
+                &nbsp;
+                <button type="submit" class="btn btn-success" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal" (click)="doEditSchedule(appointmentSchedule)">Save</button>
+                &nbsp;
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="container mt-5">
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                
+              </div>
+              <div class="col-md-6">
+                <div class="alert alert-primary" role="alert">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="Search" aria-label="First name">
+                        </div>
+                        <div class="col-sm-3 ">
+                            <button type="submit" class="form-control">Search</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="col">
+                
+              </div>
+            </div>
+          </div>
+        
+    </div>
+    <div *ngFor="let doctor of alldoctors" class="card" style="margin:5%;">
+        <div class="card-header">
+            {{doctor.dd.specialization}}
+        </div>
+        <div class="card-body">
+            <div class="container ">
+                <div class="row h-200 ">
+                    <div class="col">
+                        <h5 class="card-title"><span>Dr. {{doctor.dd.first_NAME}} &nbsp; {{doctor.dd.last_NAME}}</span></h5>
+                        <p class="card-text">{{doctor.dd.chembar_ADDRESS}}</p>
+                        <p class="card-test"><span class="badge rounded-pill bg-success text-white"><b>₹ </b>{{doctor.dd.visiting_PRICE}}</span></p>
+
+                    </div>
+                    <div class="col text-end">
+                        <div>
+                            <h5 class="card-title">Availabel On</h5>
+                            <p *ngFor="let  appointment of doctor.as" class="card-text"><b>{{appointment.schedule_DAY}}</b> &nbsp;
+                                <b>{{appointment.schedule_TIME_START}}</b> TO <b>{{appointment.schedule_TIME_END}}</b> </p>
+                            <button class="btn btn-outline-dark" (click)="doBookAppointment()">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

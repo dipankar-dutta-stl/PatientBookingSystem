@@ -1,0 +1,77 @@
+<header class="header_wapper">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/assets/images/logo.png" class="img-fluid">
+      </a>
+      <button class="navbar-toggler" type="button" onclick="navToggle()" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0 ">
+          <li class="nav-item" style="color:#144272">
+            <a class="nav-link" aria-current="page" routerLink="/" style="color:#144272;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:#144272;" routerLink="doctors">Doctors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color:#144272;">Appointment</a>
+          </li>
+          <li *ngIf="!user_email" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false" style="color:#144272;">
+              Login
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownLogin">
+              <li style="margin-left:10px;margin-right:10px;"><a class="dropdown-item btn"
+                  style="background:#144272;color: aliceblue;" routerLink="patient-login">Login as a Patient</a></li>
+              <li style="margin-left:10px;margin-right:10px;">
+                <hr class="dropdown-divider">
+              </li>
+              <li style="margin-left:10px;margin-right:10px;"><a class="dropdown-item btn"
+                  style="background:#144272;color: aliceblue;" routerLink="/doctor-login">Login as a Doctor</a></li>
+            </ul>
+          </li>
+          <li *ngIf="!user_email" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false" style="color:#144272;">
+              Signup
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownLogin">
+              <li style="margin-left:10px;margin-right:10px;"><a class="dropdown-item btn"
+                  style="background:#144272;color: aliceblue;" routerLink="/patient-signup">Signup as a Patient</a></li>
+              <li style="margin-left:10px;margin-right:10px;">
+                <hr class="dropdown-divider">
+              </li>
+              <li style="margin-left:10px;margin-right:10px;"><a class="dropdown-item btn"
+                  style="background:#144272;color: aliceblue;" routerLink="/doctor-signup">Signup as a Doctor</a></li>
+            </ul>
+          </li>
+          <li *ngIf="user_email" class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false" style="color:#144272;">
+            {{user_email}}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownLogin">
+            <li style="margin-left:10px;margin-right:10px;"><a class="dropdown-item btn"
+                style="background:#144272;color: aliceblue;" (click)="goToProfile()">Profile</a></li>
+            <li style="margin-left:10px;margin-right:10px;">
+              <hr class="dropdown-divider">
+            </li>
+            <li style="margin-left:10px;margin-right:10px;"><a class="dropdown-item btn"
+                style="background:#144272;color: aliceblue;" href="#" (click)="doLogOut()">Logout</a></li>
+          </ul>
+          </li>
+        </ul>
+        <!-- <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+  </nav>
+</header>
+
+

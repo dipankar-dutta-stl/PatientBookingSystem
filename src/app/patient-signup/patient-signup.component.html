@@ -1,0 +1,49 @@
+<div class="container" style="height:700px;">
+
+
+    <div class="alert alert-primary text-center mt-5" role="alert">
+        Patient Signup
+    </div>
+    <form class="row g-3 mt-5 " style="background-color: lavenderblush;padding:20px;">
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" [(ngModel)]="patient.patientLogin.email_ID" name="email_ID">
+        </div>
+        <div class="col-md-6">
+            <label for="inputMobile" class="form-label">Mobile No</label>
+            <input type="text" class="form-control" id="inputMobile" [(ngModel)]="patient.patientDetails.mobile_NO" name="mobile_NO">
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputFirstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="inputFirstName" [(ngModel)]="patient.patientDetails.first_NAME" name="first_NAME">
+        </div>
+        <div class="col-md-4">
+            <label for="inputLastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="inputLastName" [(ngModel)]="patient.patientDetails.last_NAME" name="last_NAME">
+        </div>
+        <div class="col-md-2">
+            <label for="inputGender" class="form-label">Gender</label>
+            <select id="inputGender" class="form-select" [(ngModel)]="patient.patientDetails.gender" name="gender">
+                <option selected>Choose...</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" [(ngModel)]="patient.patientDetails.address" name="address">
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" [(ngModel)]="patient.patientLogin.password" name="password">
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Confrim Password</label>
+            <input type="password" class="form-control" id="inputPassword4" [(ngModel)]="confrimPassword" name="confrimPassword">
+          </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" (click)="Signup()">Sign in</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+/* 144272 */
+
+
+@font-face {
+    font-family:VarelaRound-Regular;
+    src: url("/assets/font/VarelaRound-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family:ConcertOne-Regular;
+    src: url("/assets/font/ConcertOne-Regular.ttf") format("truetype");
+}
+
+*{
+    margin:0px;
+    padding: 0px;
+    font-family: 'VarelaRound-Regular';
+}
+

@@ -1,0 +1,109 @@
+.wrapper{
+    padding:6.25rem 0;
+}
+
+.banner_wrapper{
+    background-image:url('/assets/images/appointmnet-bg.jpg');
+    box-sizing:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.main-btn{
+    display:inline-block;
+    border:0.0625rem solid white;
+    color:white;
+    text-align:center;
+    padding:.75rem 1.375rem;
+    font-size:1rem;
+    background:transparent;
+    text-transform: capitalize;
+    border-radius:.1875rem;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.main-btn:hover{
+    display:inline-block;
+    border:0.0625rem solid white;
+    color:black;
+    text-align:center;
+    padding:.75rem 1.375rem;
+    font-size:1rem;
+    background:white;
+    text-transform: capitalize;
+    border-radius:.1875rem;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card{
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: .5084rem 1.1419rem 2.5rem 0 rgb(0 0 0/8%);
+    padding: 3.75rem 3.125rem 4.6875rem;
+    transition: all .4s;
+    border: 0;
+}
+
+.card:hover{
+    transform: translateY(-0.625rem);
+}
+
+.icon-box{
+    text-align: center;
+    margin: 0 auto 2.5rem;
+}
+
+
+.about_wrapper h2{
+    color:black;
+
+}
+.about_wrapper .card{
+    width:80%;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about_wrapper .about-clinic{
+    flex: 0 0 auto;
+    width:50%;
+}
+
+.about_wrapper .about-clinic:nth-child(1),
+.about_wrapper .about-clinic:nth-child(2){
+    margin-bottom: 2.8125rem;
+}
+
+.about_wrapper .about-clinic:nth-child(2),
+.about_wrapper .about-clinic:nth-child(4){
+    padding-left: 3.75rem;
+}
+
+.about_wrapper .line-1,
+.about_wrapper .line-2{
+    content: '';
+    position:absolute;
+    left:50% ;
+    top:50%;
+    transform: translate(-50%,-50%);
+    width:.0313rem;
+    height:100%;
+    background: darkgray;
+}
+.about_wrapper .line-2{
+    width: 100%;
+    height:.0625rem;
+}
+
+.about_wrapper .about-animate{
+    position:absolute;
+    left:-2.5rem;
+    bottom: 0;
+    animation: movebounce 3s linear infinite;
+}
+
