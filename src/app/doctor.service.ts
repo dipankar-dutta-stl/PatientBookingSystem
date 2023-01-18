@@ -31,6 +31,10 @@ export class DoctorService {
     return this.http.get("http://localhost:8001/api/v1/doctor/get/"+email,{headers:header,responseType:'json'});
   }
 
+  getDoctorById(id:String){
+    return this.http.get("http://localhost:8001/api/v1/doctor/get/id/"+id,{responseType:'json'});
+  }
+
   doUpdateDoctor(doctorDetails:DoctorDetails){
     const header=new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem("current_user")});
     return this.http.put("http://localhost:8001/api/v1/doctor/update",doctorDetails,{headers:header,responseType:'text'})

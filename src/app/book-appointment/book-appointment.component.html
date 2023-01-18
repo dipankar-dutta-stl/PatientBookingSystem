@@ -1,0 +1,41 @@
+<div class="container p-10">
+    <div class="alert alert-success text-center">
+        <h6>Doctor Details</h6>
+    </div>
+    <div class="card" style="margin:5%;">
+        <form>
+            <div class="card-header">
+                {{doctor.dd.specialization}}
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row h-200 ">
+                        <div class="col-md-8">
+                            <h5 class="card-title"><span>Dr. {{doctor.dd.first_NAME}} &nbsp;{{doctor.dd.last_NAME}}
+                                </span></h5>
+                            <p class="card-text">{{doctor.dd.chembar_ADDRESS}}</p>
+                            <p class="card-test"><span class="badge rounded-pill bg-success text-white"><b>₹
+                                        {{doctor.dd.visiting_PRICE}}</b></span></p>
+
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <div>
+                                <h5 class="card-title">Choose Your Slot</h5>
+                                <div class="card-text justify-content-end">
+                                    <div *ngFor="let a of doctor.as" class="form-check">
+                                        <input class="form-check-input" type="radio" id="gridCheck" name="slot">
+                                        <label class="form-check-label" for="gridCheck">
+                                            {{a.schedule_DAY}} FROM {{a.schedule_TIME_START}} TO {{a.schedule_TIME_END}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>

@@ -18,6 +18,7 @@ import { DoctorSignupComponent } from './doctor-signup/doctor-signup.component';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
 import { PatientProfileComponent } from './patient-profile/patient-profile.component';
 import { DoctorComponent } from './doctor/doctor.component';
+import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { DoctorComponent } from './doctor/doctor.component';
     DoctorProfileComponent,
     PatientProfileComponent,
     DoctorComponent,
+    BookAppointmentComponent,
   ],
   imports: [
     BrowserModule,

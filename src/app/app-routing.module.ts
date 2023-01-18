@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
 import { DoctorSignupComponent } from './doctor-signup/doctor-signup.component';
@@ -12,17 +13,18 @@ import { PatientSignupComponent } from './patient-signup/patient-signup.componen
 import { SuccessMessageComponent } from './success-message/success-message.component';
 
 const routes: Routes = [
-   {path:"",component:HomeComponent},
-  {path:"patient-login",component:PatientLoginComponent},
-  {path:"patient-signup",component:PatientSignupComponent},
-  {path:"success-message/:msg",component:SuccessMessageComponent},
-  {path:"error-message/:emsg",component:ErrorMessageComponent},
-  {path:"doctor-login",component:DoctorLoginComponent},
-  {path:"doctor-signup",component:DoctorSignupComponent},
-  {path:"doctor-profile/:email",component:DoctorProfileComponent},
-  {path:"patient-profile/:email",component:PatientProfileComponent},
-  {path:"doctors",component:DoctorComponent}
-  
+  { path: "", component: HomeComponent },
+  { path: "patient-login", component: PatientLoginComponent },
+  { path: "patient-signup", component: PatientSignupComponent },
+  { path: "success-message/:msg", component: SuccessMessageComponent },
+  { path: "error-message/:emsg", component: ErrorMessageComponent },
+  { path: "doctor-login", component: DoctorLoginComponent },
+  { path: "doctor-signup", component: DoctorSignupComponent },
+  { path: "doctor-profile/:email", component: DoctorProfileComponent },
+  { path: "patient-profile/:email", component: PatientProfileComponent },
+  { path: "doctors", component: DoctorComponent },
+  { path: "book-appointment/d/:id", component: BookAppointmentComponent }
+
 ];
 
 @NgModule({

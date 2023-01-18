@@ -19,9 +19,13 @@ export class DoctorComponent implements OnInit {
     });
   }
 
-  doBookAppointment(){
+  doBookAppointment(id:String){
     if(localStorage.getItem("current_user")!=null && localStorage.getItem("user_email")!=null && localStorage.getItem("current_user_type")!=null){
-      
+      if(localStorage.getItem("current_user_type")=="PATIENT"){
+        this.router.navigateByUrl("/book-appointment/d/"+id);
+      }else{
+        alert("Please Login as Patient");
+      }
     }
     else{
       alert("Please login ")

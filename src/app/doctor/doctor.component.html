@@ -42,7 +42,7 @@
                             <h5 class="card-title">Availabel On</h5>
                             <p *ngFor="let  appointment of doctor.as" class="card-text"><b>{{appointment.schedule_DAY}}</b> &nbsp;
                                 <b>{{appointment.schedule_TIME_START}}</b> TO <b>{{appointment.schedule_TIME_END}}</b> </p>
-                            <button class="btn btn-outline-dark" (click)="doBookAppointment()">Book Appointment</button>
+                            <button class="btn btn-outline-dark" (click)="doBookAppointment(doctor.dd.id)">Book Appointment</button>
                         </div>
                     </div>
                 </div>
