@@ -28,6 +28,10 @@ export class PatientService {
     return this.http.get("http://localhost:8002/api/v1/patient/get/"+email,{headers:header,responseType:'json'});
   }
 
+  doGetPatientById(id:String){
+    return this.http.get("http://localhost:8002/api/v1/patient/get/id/"+id,{responseType:'json'});
+  }
+
   doUpdatePatient(pdetails:PatientDetails){
     const header=new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem("current_user")});
     return this.http.put("http://localhost:8002/api/v1/patient/update",pdetails,{headers:header,responseType:'text'});

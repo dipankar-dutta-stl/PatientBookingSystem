@@ -11,4 +11,12 @@ export class AppointmentService {
   doBookAppointment(ad:AppointmentDetails){
     return this.http.post("http://localhost:8003/api/v1/appointment/add",ad,{responseType:'text'})
   }
+
+  getAppointmentByDoctorId(id:String){
+    return this.http.get("http://localhost:8003/api/v1/appointment/get/d/"+id,{responseType:'json'});
+  }
+
+  getAppointmentByPatientId(id:String){
+    return this.http.get("http://localhost:8003/api/v1/appointment/get/d/"+id,{responseType:'json'});
+  }
 }

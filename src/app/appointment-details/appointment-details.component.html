@@ -1,0 +1,28 @@
+<div class="container p-10">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">PATIENT</th>
+        <th scope="col">ADDRESS</th>
+        <th scope="col">MOBILE</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">DAY</th>
+        <th scope="col">TIME</th>
+        <th scope="col">STATUS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of appdetails;index as i" >
+        <th scope="row">{{i+1}}</th>
+        <td>{{a.first_NAME}}&nbsp;{{a.last_NAME}}</td>
+        <td>{{a.address}}</td>
+        <td>{{a.mobile_NO}}</td>
+        <td>{{a.email}}</td>
+        <td>{{a.a_DAY}}</td>
+        <td>{{a.a_TIME}}</td>
+        <td>{{a.appointment_CONFRIMED}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
