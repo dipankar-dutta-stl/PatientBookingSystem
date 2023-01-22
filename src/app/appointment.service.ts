@@ -17,6 +17,10 @@ export class AppointmentService {
   }
 
   getAppointmentByPatientId(id:String){
-    return this.http.get("http://localhost:8003/api/v1/appointment/get/d/"+id,{responseType:'json'});
+    return this.http.get("http://localhost:8003/api/v1/appointment/get/p/"+id,{responseType:'json'});
+  }
+
+  acceptAppointmentById(id:String){
+    return this.http.put("http://localhost:8003/api/v1/appointment/update/"+id,{});
   }
 }

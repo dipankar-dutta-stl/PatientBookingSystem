@@ -3,13 +3,14 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">PATIENT</th>
+        <th scope="col">NAME</th>
         <th scope="col">ADDRESS</th>
         <th scope="col">MOBILE</th>
         <th scope="col">EMAIL</th>
         <th scope="col">DAY</th>
         <th scope="col">TIME</th>
         <th scope="col">STATUS</th>
+        <th *ngIf="isDoctor" scope="col">ACTION</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +23,7 @@
         <td>{{a.a_DAY}}</td>
         <td>{{a.a_TIME}}</td>
         <td>{{a.appointment_CONFRIMED}}</td>
+        <td *ngIf="isDoctor"><button class="btn btn-success" (click)="acceptAppointment(a.appointment_ID)">ACCEPT</button></td>
       </tr>
     </tbody>
   </table>
