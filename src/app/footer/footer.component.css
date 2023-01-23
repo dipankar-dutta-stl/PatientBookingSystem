@@ -1,4 +1,4 @@
-.footer_wrapper{
+/* .footer_wrapper{
     background-image: url('/assets/images/footer.jpg');
     color: white;
     padding: 10px;
@@ -34,6 +34,26 @@
     text-decoration: none;
     cursor: pointer;
 }
-
-
-
+ */
+a{
+    text-decoration: none;
+    color: white;
+}
+input::placeholder{
+    color: #f7f7f7;
+}
+.form-control{
+    color: white;
+}
+ul{
+    list-style-type: none;
+}
+.display-4{
+    font-size: 32px;
+}
+.lead{
+    font-size: 18px;
+}
+.minput{
+    margin-bottom:15px;
+}

@@ -1,29 +1,30 @@
-<div class="container p-10">
-  <table class="table">
-    <thead>
+<div class="container mb-5">
+  <h2 class="display-4 text-center py-5">Appointment Details</h2>
+  <table class="table table table-striped table-bordered">
+    <thead class="bg-primary text-light">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">NAME</th>
-        <th scope="col">ADDRESS</th>
-        <th scope="col">MOBILE</th>
-        <th scope="col">EMAIL</th>
-        <th scope="col">DAY</th>
-        <th scope="col">TIME</th>
-        <th scope="col">STATUS</th>
-        <th *ngIf="isDoctor" scope="col">ACTION</th>
+        <th class="p-3" scope="col">#</th>
+        <th class="p-3" scope="col">NAME</th>
+        <th class="p-3" scope="col">ADDRESS</th>
+        <th class="p-3" scope="col">MOBILE</th>
+        <th class="p-3" scope="col">EMAIL</th>
+        <th class="p-3" scope="col">DAY</th>
+        <th class="p-3" scope="col">TIME</th>
+        <th class="p-3" scope="col">STATUS</th>
+        <th class="p-3" *ngIf="isDoctor" scope="col">ACTION</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let a of appdetails;index as i" >
-        <th scope="row">{{i+1}}</th>
-        <td>{{a.first_NAME}}&nbsp;{{a.last_NAME}}</td>
-        <td>{{a.address}}</td>
-        <td>{{a.mobile_NO}}</td>
-        <td>{{a.email}}</td>
-        <td>{{a.a_DAY}}</td>
-        <td>{{a.a_TIME}}</td>
-        <td>{{a.appointment_CONFRIMED}}</td>
-        <td *ngIf="isDoctor"><button class="btn btn-success" (click)="acceptAppointment(a.appointment_ID)">ACCEPT</button></td>
+        <th class="p-3" scope="row">{{i+1}}</th>
+        <td class="p-3">{{a.first_NAME}}&nbsp;{{a.last_NAME}}</td>
+        <td class="p-3">{{a.address}}</td>
+        <td class="p-3">{{a.mobile_NO}}</td>
+        <td class="p-3">{{a.email}}</td>
+        <td class="p-3">{{a.a_DAY}}</td>
+        <td class="p-3">{{a.a_TIME}}</td>
+        <td class="p-3">{{a.appointment_CONFRIMED}}</td>
+        <td class="p-3" *ngIf="isDoctor"><button class="btn btn-dark" (click)="acceptAppointment(a.appointment_ID)">ACCEPT</button></td>
       </tr>
     </tbody>
   </table>

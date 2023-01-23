@@ -31,7 +31,6 @@ export class AppointmentDetailsComponent implements OnInit {
             resp2.subscribe(data => {
               if (data != null) {
                 this.appdetails = <ADetails>data;
-                console.log(data);
               }
             })
           }
@@ -47,7 +46,7 @@ export class AppointmentDetailsComponent implements OnInit {
             console.log(this.patient.patientDetails.id);
             let resp2 = this.aservice.getAppointmentByPatientId(this.patient.patientDetails.id);
             resp2.subscribe(data => {
-              if (data != null) {
+              if (data!=null) {
                 this.appdetails = <ADetails>data;
               }
             })

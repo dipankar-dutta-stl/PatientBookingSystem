@@ -68,7 +68,7 @@ export class BookAppointmentComponent implements OnInit {
           }
         })
       }else{
-        alert("PLEASE SLECTE APPOINTMENT SLOT");
+        alert("PLEASE SELECT APPOINTMENT SLOT");
       }
     }
     else{
