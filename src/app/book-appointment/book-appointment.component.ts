@@ -13,11 +13,11 @@ import { AppointmentDetails } from '../models/AppointmentDetails';
   styleUrls: ['./book-appointment.component.css']
 })
 export class BookAppointmentComponent implements OnInit {
-  doctor: Doctor=new Doctor();
+  doctor: Doctor = new Doctor();
   id: String;
-  patient: Patient=new Patient();
-  appoimentDetails:AppointmentDetails=new AppointmentDetails();
-  constructor(private dservice: DoctorService, private pervice: PatientService,private aservice:AppointmentService,private aroute: ActivatedRoute, private router: Router) { }
+  patient: Patient = new Patient();
+  appoimentDetails: AppointmentDetails = new AppointmentDetails();
+  constructor(private dservice: DoctorService, private pervice: PatientService, private aservice: AppointmentService, private aroute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     if (localStorage.getItem("current_user") != null && localStorage.getItem("user_email") != null && localStorage.getItem("current_user_type") != null) {
@@ -29,19 +29,19 @@ export class BookAppointmentComponent implements OnInit {
       resp.subscribe(data => {
         if (data != null) {
           this.doctor = <Doctor>data;
-          
+
         }
         else {
           this.router.navigateByUrl("error-message/" + "ERROR");
         }
       })
 
-      let resp1=this.pervice.doGetPatient(localStorage.getItem("user_email"));
-      resp1.subscribe(data=>{
-        if(data!=null){
-          this.patient=<Patient>data;
+      let resp1 = this.pervice.doGetPatient(localStorage.getItem("user_email"));
+      resp1.subscribe(data => {
+        if (data != null) {
+          this.patient = <Patient>data;
         }
-        else{
+        else {
           this.router.navigateByUrl("error-message/" + "ERROR");
         }
       })
@@ -52,26 +52,26 @@ export class BookAppointmentComponent implements OnInit {
 
   }
 
-  bookAppointment(){
-    this.appoimentDetails.doctor_ID=this.doctor.dd.id;
-    this.appoimentDetails.patient_ID=this.patient.patientDetails.id;
-    this.appoimentDetails.appointment_CONFRIMED="NOT CONFRIMED";
-    if(this.appoimentDetails!=null){
-      if(this.appoimentDetails.appointment_SCHEDULE_ID!=null){
+  bookAppointment() {
+    this.appoimentDetails.doctor_ID = this.doctor.dd.id;
+    this.appoimentDetails.patient_ID = this.patient.patientDetails.id;
+    this.appoimentDetails.appointment_CONFRIMED = "NOT CONFRIMED";
+    if (this.appoimentDetails != null) {
+      if (this.appoimentDetails.appointment_SCHEDULE_ID != null) {
         console.log(this.appoimentDetails);
-        let resp=this.aservice.doBookAppointment(this.appoimentDetails);
-        resp.subscribe(data=>{
-          if(data=="APPOINTMENT BOOK SUCCESSFULLY"){
-            this.router.navigateByUrl("success-message/"+data);
-          }else{
+        let resp = this.aservice.doBookAppointment(this.appoimentDetails);
+        resp.subscribe(data => {
+          if (data == "APPOINTMENT BOOK SUCCESSFULLY") {
+            this.router.navigateByUrl("success-message/" + data);
+          } else {
             this.router.navigateByUrl("error-message/" + data);
           }
         })
-      }else{
+      } else {
         alert("PLEASE SELECT APPOINTMENT SLOT");
       }
     }
-    else{
+    else {
       alert("PLEASE SUBMIT DATA")
     }
   }

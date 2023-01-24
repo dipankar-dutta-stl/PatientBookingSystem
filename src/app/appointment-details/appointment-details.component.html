@@ -23,8 +23,9 @@
         <td class="p-3">{{a.email}}</td>
         <td class="p-3">{{a.a_DAY}}</td>
         <td class="p-3">{{a.a_TIME}}</td>
-        <td class="p-3">{{a.appointment_CONFRIMED}}</td>
-        <td class="p-3" *ngIf="isDoctor"><button class="btn btn-dark" (click)="acceptAppointment(a.appointment_ID)">ACCEPT</button></td>
+        <td *ngIf="a.appointment_CONFRIMED=='CONFRIMED'" class="p-3"><span class="badge bg-success">{{a.appointment_CONFRIMED}}</span></td>
+        <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
+        <td class="p-3" *ngIf="isDoctor"><button class="btn btn-dark" (click)="acceptAppointment(a.appointment_ID)" [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')">ACCEPT</button></td>
       </tr>
     </tbody>
   </table>

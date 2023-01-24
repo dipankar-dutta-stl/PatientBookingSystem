@@ -33,7 +33,6 @@ export class DoctorProfileComponent implements OnInit {
           resp.subscribe(data => {
             this.doctor = <Doctor>data;
             this.appointmentSchedule.schedule_DAY = "Choose...";
-            console.log(this.doctor);
           });
         } else {
           this.router.navigateByUrl("error-message/YOU ARE NOT LOGGED IN AS DOCTOR.")
@@ -74,16 +73,20 @@ export class DoctorProfileComponent implements OnInit {
 
   // ADD APPOINTMENT SCHEDULE FOR DOCTOR
   addAppointmentSchedule() {
-    this.appointmentSchedule.doctor_ID = this.doctor.dd.id;
-    let resp = this.dService.doAddSchedule(this.appointmentSchedule);
-    resp.subscribe(data => {
-      console.log(data);
-      if (data = "SUCCESSFULLY ADDED") {
-        alert(data);
-        this.ngOnInit();
-        this.viewAddScheduleForm = false;
-      }
-    })
+    if(this.appointmentSchedule.schedule_DAY!="Choose..."){
+      this.appointmentSchedule.doctor_ID = this.doctor.dd.id;
+      let resp = this.dService.doAddSchedule(this.appointmentSchedule);
+      resp.subscribe(data => {
+        if (data = "SUCCESSFULLY ADDED") {
+          alert(data);
+          this.ngOnInit();
+          this.viewAddScheduleForm = false;
+        }
+      })
+    }else{
+      alert("INVALID");
+    }
+   
   }
 
   // DISPLAY FORM FOR SCHEDULE
@@ -113,16 +116,19 @@ export class DoctorProfileComponent implements OnInit {
 
   // ENABLE EDITOR FOR SCHEDULE
   doEditSchedule(as: AppointmentSchedule) {
-    console.log(as);
-    let resp = this.dService.doUpdateSchedule(as);
-    resp.subscribe(data => {
-      if (data == "UPDATE SUCCESSFULL") {
-        this.ngOnInit();
-      } else {
-        alert(data);
-      }
 
-    })
+    if(as.schedule_DAY!="Choose..."){
+      let resp = this.dService.doUpdateSchedule(as);
+      resp.subscribe(data => {
+        if (data == "UPDATE SUCCESSFULL") {
+          this.ngOnInit();
+        } else {
+          alert(data);
+        }
+  
+      })
+    }
+   
     
   }
 
