@@ -1,6 +1,37 @@
 <div class="container mb-5">
   <h2 class="display-4 text-center py-5">Appointment Details</h2>
-  <table class="table table table-striped table-bordered">
+
+   <div class="container mt-5">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-2">
+                
+              </div>
+              <div class="col-md-8">
+                <div class="alert alert-primary" role="alert">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchKey">
+                        </div>
+                        <div class="col-sm-2 ">
+                            <button type="button" class="form-control btn btn-primary" (click)="searchAppointment()">Search</button>
+                        </div>
+                        <div class="col-sm-2 ">
+                          <button type="button" class="form-control btn btn-danger" (click)="cancelSearch()">Cancel</button>
+                      </div>
+                       
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-2">
+                
+              </div>
+            </div>
+          </div>
+        
+    </div>
+
+  <table *ngIf="mainTable" class="table table table-striped table-bordered">
     <thead class="bg-primary text-light">
       <tr>
         <th class="p-3" scope="col">#</th>
@@ -16,6 +47,39 @@
     </thead>
     <tbody>
       <tr *ngFor="let a of appdetails;index as i" >
+        <th class="p-3" scope="row">{{i+1}}</th>
+        <td class="p-3">{{a.first_NAME}}&nbsp;{{a.last_NAME}}</td>
+        <td class="p-3">{{a.address}}</td>
+        <td class="p-3">{{a.mobile_NO}}</td>
+        <td class="p-3">{{a.email}}</td>
+        <td class="p-3">{{a.a_DAY}}</td>
+        <td class="p-3">{{a.a_TIME}}</td>
+        <td *ngIf="a.appointment_CONFRIMED=='CONFRIMED'" class="p-3"><span class="badge bg-success">{{a.appointment_CONFRIMED}}</span></td>
+        <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
+        <td class="p-3" *ngIf="isDoctor"><button class="btn btn-dark" (click)="acceptAppointment(a.appointment_ID)" [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')">ACCEPT</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+  <table *ngIf="showSearch" class="table table table-striped table-bordered">
+    <thead class="bg-primary text-light">
+      <tr>
+        <th class="p-3" scope="col">#</th>
+        <th class="p-3" scope="col">NAME</th>
+        <th class="p-3" scope="col">ADDRESS</th>
+        <th class="p-3" scope="col">MOBILE</th>
+        <th class="p-3" scope="col">EMAIL</th>
+        <th class="p-3" scope="col">DAY</th>
+        <th class="p-3" scope="col">TIME</th>
+        <th class="p-3" scope="col">STATUS</th>
+        <th class="p-3" *ngIf="isDoctor" scope="col">ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of tempList;index as i" >
         <th class="p-3" scope="row">{{i+1}}</th>
         <td class="p-3">{{a.first_NAME}}&nbsp;{{a.last_NAME}}</td>
         <td class="p-3">{{a.address}}</td>

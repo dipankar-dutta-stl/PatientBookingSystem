@@ -4,4 +4,5 @@ export class AppointmentDetails{
     patient_ID:String;
     appointment_SCHEDULE_ID:String;
     appointment_CONFRIMED:String;
+    tags:String;
 }

@@ -56,6 +56,8 @@ export class BookAppointmentComponent implements OnInit {
     this.appoimentDetails.doctor_ID = this.doctor.dd.id;
     this.appoimentDetails.patient_ID = this.patient.patientDetails.id;
     this.appoimentDetails.appointment_CONFRIMED = "NOT CONFRIMED";
+    this.appoimentDetails.tags=this.doctor.dd.first_NAME+" "+this.doctor.dd.last_NAME+"|"+this.patient.patientDetails.first_NAME+" "+this.patient.patientDetails.last_NAME+"|"+this.patient.patientDetails.mobile_NO+"|"+this.doctor.dd.mobile_NO+"|"+this.doctor.dd.email_ID+"|"+this.patient.patientDetails.email_ID;
+    this.appoimentDetails.tags=this.appoimentDetails.tags.toLocaleLowerCase();
     if (this.appoimentDetails != null) {
       if (this.appoimentDetails.appointment_SCHEDULE_ID != null) {
         console.log(this.appoimentDetails);
@@ -67,13 +69,12 @@ export class BookAppointmentComponent implements OnInit {
             this.router.navigateByUrl("error-message/" + data);
           }
         })
-      } else {
-        alert("PLEASE SELECT APPOINTMENT SLOT");
       }
     }
     else {
       alert("PLEASE SUBMIT DATA")
     }
+    
   }
 
 }

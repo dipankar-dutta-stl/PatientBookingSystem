@@ -29,9 +29,12 @@
                                             <div class="card-text justify-content-end">
                                                 <div *ngFor="let a of doctor.as" class="form-check">
                                                     <input class="form-check-input" type="radio" id="gridCheck"
-                                                        name="appointment_SCHEDULE_ID" [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID" value="{{a.id}}">
+                                                        name="appointment_SCHEDULE_ID"
+                                                        [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
+                                                        value="{{a.id}}">
                                                     <label class="form-check-label" for="gridCheck">
-                                                        <b>{{a.schedule_DAY}}</b> FROM <b>{{a.schedule_TIME_START}}</b> TO
+                                                        <b>{{a.schedule_DAY}}</b> FROM <b>{{a.schedule_TIME_START}}</b>
+                                                        TO
                                                         <b>{{a.schedule_TIME_END}}</b>
                                                     </label>
                                                 </div>
@@ -65,23 +68,42 @@
                                     </div>
                                     <div class="col-md-4 text-right">
                                         <div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-            
+
                         </div>
                     </form>
                 </div>
-            
+
             </div>
         </div>
         <div class="row">
-            <button class="btn btn-primary" (click)="bookAppointment()">Book Appointment</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="appoimentDetails.appointment_SCHEDULE_ID==null">Book Appointment</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Make Payment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <h1><span class="badge bg-primary">₹ {{doctor.dd.visiting_PRICE}}</span></h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" aria-label="Close" (click)="bookAppointment()">Make Payment</button>
+                </div>
+            </div>
         </div>
     </div>
 
 
-   
+
 </div>
