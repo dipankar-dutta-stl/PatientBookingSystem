@@ -1,3 +1,15 @@
-.display-4{
+.display-4 {
     text-decoration: underline;
+}
+
+.custom-img {
+    height: 30px;
+    width: 30px;
+    
+}
+
+.custom-btn{
+    padding: 0;
+    border: none;
+    background: none;
 }

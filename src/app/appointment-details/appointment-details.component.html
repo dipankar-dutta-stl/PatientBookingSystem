@@ -1,35 +1,35 @@
-<div class="container mb-5">
+<div class="container mb-5" style="width:90%;">
   <h2 class="display-4 text-center py-5">Appointment Details</h2>
 
-   <div class="container mt-5">
-        <div class="container">
-            <div class="row">
-              <div class="col-md-2">
-                
-              </div>
+  <div class="container mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+          <div class="alert alert-primary" role="alert">
+            <div class="row justify-content-md-center">
               <div class="col-md-8">
-                <div class="alert alert-primary" role="alert">
-                    <div class="row justify-content-md-center">
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchKey">
-                        </div>
-                        <div class="col-sm-2 ">
-                            <button type="button" class="form-control btn btn-primary" (click)="searchAppointment()">Search</button>
-                        </div>
-                        <div class="col-sm-2 ">
-                          <button type="button" class="form-control btn btn-danger" (click)="cancelSearch()">Cancel</button>
-                      </div>
-                       
-                    </div>
-                </div>
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchKey">
               </div>
-              <div class="col-md-2">
-                
+              <div class="col-sm-2 ">
+                <button type="button" class="form-control btn btn-primary" (click)="searchAppointment()">Search</button>
               </div>
+              <div class="col-sm-2 ">
+                <button type="button" class="form-control btn btn-danger" (click)="cancelSearch()">Cancel</button>
+              </div>
+
             </div>
           </div>
-        
+        </div>
+        <div class="col-md-2">
+
+        </div>
+      </div>
     </div>
+
+  </div>
 
   <table *ngIf="mainTable" class="table table table-striped table-bordered">
     <thead class="bg-primary text-light">
@@ -46,7 +46,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let a of appdetails;index as i" >
+      <tr *ngFor="let a of appdetails;index as i">
         <th class="p-3" scope="row">{{i+1}}</th>
         <td class="p-3">{{a.first_NAME}}&nbsp;{{a.last_NAME}}</td>
         <td class="p-3">{{a.address}}</td>
@@ -54,9 +54,15 @@
         <td class="p-3">{{a.email}}</td>
         <td class="p-3">{{a.a_DAY}}</td>
         <td class="p-3">{{a.a_TIME}}</td>
-        <td *ngIf="a.appointment_CONFRIMED=='CONFRIMED'" class="p-3"><span class="badge bg-success">{{a.appointment_CONFRIMED}}</span></td>
-        <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
-        <td class="p-3" *ngIf="isDoctor"><button class="btn btn-dark" (click)="acceptAppointment(a.appointment_ID)" [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')">ACCEPT</button></td>
+        <td *ngIf="a.appointment_CONFRIMED=='CONFRIMED'" class="p-3"><span
+            class="badge bg-success">{{a.appointment_CONFRIMED}}</span></td>
+        <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span
+            class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
+        <td class="p-3" *ngIf="isDoctor"><button class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
+            [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')"><img class="custom-img"
+              src="/assets/images/check.png"></button>
+          <button class="custom-btn"><img class="custom-img" src="/assets/images/pdf.png"></button>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -79,7 +85,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let a of tempList;index as i" >
+      <tr *ngFor="let a of tempList;index as i">
         <th class="p-3" scope="row">{{i+1}}</th>
         <td class="p-3">{{a.first_NAME}}&nbsp;{{a.last_NAME}}</td>
         <td class="p-3">{{a.address}}</td>
@@ -87,9 +93,15 @@
         <td class="p-3">{{a.email}}</td>
         <td class="p-3">{{a.a_DAY}}</td>
         <td class="p-3">{{a.a_TIME}}</td>
-        <td *ngIf="a.appointment_CONFRIMED=='CONFRIMED'" class="p-3"><span class="badge bg-success">{{a.appointment_CONFRIMED}}</span></td>
-        <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
-        <td class="p-3" *ngIf="isDoctor"><button class="btn btn-dark" (click)="acceptAppointment(a.appointment_ID)" [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')">ACCEPT</button></td>
+        <td *ngIf="a.appointment_CONFRIMED=='CONFRIMED'" class="p-3"><span
+            class="badge bg-success">{{a.appointment_CONFRIMED}}</span></td>
+        <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span
+            class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
+        <td class="p-3" *ngIf="isDoctor"><button class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
+            [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')"><img class="custom-img"
+              src="/assets/images/check.png"></button>
+          <button class="custom-btn"><img class="custom-img" src="/assets/images/pdf.png"></button>
+        </td>
       </tr>
     </tbody>
   </table>

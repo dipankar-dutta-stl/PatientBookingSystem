@@ -73,10 +73,11 @@ export class AppointmentDetailsComponent implements OnInit {
   }
 
   searchAppointment() {
-    this.showSearch =true;
-    this.mainTable = false;
+
     this.tempList = [];
     if (this.searchKey != null) {
+      this.showSearch = true;
+      this.mainTable = false;
       for (let i in this.appdetails) {
         if (this.appdetails[i].tags.includes(this.searchKey.toLowerCase())) {
           this.tempList.push(this.appdetails[i]);
@@ -89,10 +90,10 @@ export class AppointmentDetailsComponent implements OnInit {
 
   }
 
-  cancelSearch(){
-    this.showSearch =false;
+  cancelSearch() {
+    this.showSearch = false;
     this.mainTable = true;
-    this.searchKey="";
+    this.searchKey = null;
   }
 
 }
