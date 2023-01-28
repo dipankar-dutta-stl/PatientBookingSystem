@@ -23,6 +23,8 @@ export class AppointmentDetailsComponent implements OnInit {
   constructor(private router: Router, private dservice: DoctorService, private pservice: PatientService, private aservice: AppointmentService) { }
 
   ngOnInit(): void {
+    this.showSearch = false;
+    this.mainTable = true;
 
     if (localStorage.getItem("current_user") != null && localStorage.getItem("user_email") != null && localStorage.getItem("current_user_type") != null) {
       if (localStorage.getItem("current_user_type") == "DOCTOR") {
@@ -47,7 +49,6 @@ export class AppointmentDetailsComponent implements OnInit {
           if (data != null) {
 
             this.patient = <Patient>data;
-            console.log(this.patient.patientDetails.id);
             let resp2 = this.aservice.getAppointmentByPatientId(this.patient.patientDetails.id);
             resp2.subscribe(data => {
               if (data != null) {
@@ -66,10 +67,12 @@ export class AppointmentDetailsComponent implements OnInit {
   acceptAppointment(id: String) {
     let resp = this.aservice.acceptAppointmentById(id);
     resp.subscribe(data => {
-      console.log(data);
+      this.ngOnInit();
 
-    }, error => { this.ngOnInit(); });
-
+    }, error => {
+      this.ngOnInit();
+    });
+    this.ngOnInit();
   }
 
   searchAppointment() {
