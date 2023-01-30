@@ -17,6 +17,7 @@ export class DoctorProfileComponent implements OnInit {
   viewAddScheduleForm: Boolean = false;
   enableCancelButton: Boolean = false;
   disableSchedule: Boolean = true;
+  isDayThere:Boolean[]=[true,true,true,true,true,true,true];
   constructor(private dService: DoctorService, private router: Router) { }
 
   ngOnInit(): void {
@@ -33,6 +34,29 @@ export class DoctorProfileComponent implements OnInit {
           resp.subscribe(data => {
             this.doctor = <Doctor>data;
             this.appointmentSchedule.schedule_DAY = "Choose...";
+            for(let x in this.doctor.as){
+              if(this.doctor.as[x].schedule_DAY=="Sunday"){
+                this.isDayThere[0]=false;
+              }
+              else if(this.doctor.as[x].schedule_DAY=="Monday"){
+                this.isDayThere[1]=false;
+              }
+              else if(this.doctor.as[x].schedule_DAY=="Tuesday"){
+                this.isDayThere[2]=false;
+              }
+              else if(this.doctor.as[x].schedule_DAY=="Wednesday"){
+                this.isDayThere[3]=false;
+              }
+              else if(this.doctor.as[x].schedule_DAY=="Thruesday"){
+                this.isDayThere[4]=false;
+              }
+              else if(this.doctor.as[x].schedule_DAY=="Friday"){
+                this.isDayThere[5]=false;
+              }
+              else if(this.doctor.as[x].schedule_DAY=="Saturday"){
+                this.isDayThere[6]=false;
+              }
+            }
           });
         } else {
           this.router.navigateByUrl("error-message/YOU ARE NOT LOGGED IN AS DOCTOR.")
@@ -73,20 +97,27 @@ export class DoctorProfileComponent implements OnInit {
 
   // ADD APPOINTMENT SCHEDULE FOR DOCTOR
   addAppointmentSchedule() {
-    if(this.appointmentSchedule.schedule_DAY!="Choose..."){
-      this.appointmentSchedule.doctor_ID = this.doctor.dd.id;
-      let resp = this.dService.doAddSchedule(this.appointmentSchedule);
-      resp.subscribe(data => {
-        if (data = "SUCCESSFULLY ADDED") {
-          alert(data);
-          this.ngOnInit();
-          this.viewAddScheduleForm = false;
-        }
-      })
-    }else{
-      alert("INVALID");
+    if (this.appointmentSchedule.schedule_DAY != "Choose...") {
+      let TIME_START = this.appointmentSchedule.schedule_TIME_START.split(":");
+      let TIME_END = this.appointmentSchedule.schedule_TIME_END.split(":");
+      if (TIME_START[0] < TIME_END[0]) {
+        this.appointmentSchedule.doctor_ID = this.doctor.dd.id;
+        let resp = this.dService.doAddSchedule(this.appointmentSchedule);
+        resp.subscribe(data => {
+          if (data = "SUCCESSFULLY ADDED") {
+            alert(data);
+            this.ngOnInit();
+            this.viewAddScheduleForm = false;
+          }
+        })
+      } else {
+        alert("INVALID TIME");
+      }
+
+    } else {
+      alert("INVALID DAY");
     }
-   
+
   }
 
   // DISPLAY FORM FOR SCHEDULE
@@ -117,23 +148,32 @@ export class DoctorProfileComponent implements OnInit {
   // ENABLE EDITOR FOR SCHEDULE
   doEditSchedule(as: AppointmentSchedule) {
 
-    if(as.schedule_DAY!="Choose..."){
-      let resp = this.dService.doUpdateSchedule(as);
-      resp.subscribe(data => {
-        if (data == "UPDATE SUCCESSFULL") {
-          this.ngOnInit();
-        } else {
-          alert(data);
-        }
-  
-      })
+    if (as.schedule_DAY != "Choose...") {
+      let TIME_START = this.appointmentSchedule.schedule_TIME_START.split(":");
+      let TIME_END = this.appointmentSchedule.schedule_TIME_END.split(":");
+      if (TIME_START[0] < TIME_END[0]) {
+        let resp = this.dService.doUpdateSchedule(as);
+        resp.subscribe(data => {
+          if (data == "UPDATE SUCCESSFULL") {
+            this.ngOnInit();
+          } else {
+            alert(data);
+          }
+
+        })
+      } else {
+        alert("INVALID TIME");
+        this.ngOnInit();
+      }
+    }else{
+      alert("INVALID DAY");
     }
-   
-    
+
+
   }
 
-  doEnableEditor(as:AppointmentSchedule){
-    this.appointmentSchedule=as;
+  doEnableEditor(as: AppointmentSchedule) {
+    this.appointmentSchedule = as;
 
   }
 

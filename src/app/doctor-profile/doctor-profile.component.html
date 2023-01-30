@@ -74,7 +74,7 @@
           <tr *ngFor="let ib of doctor.as">
             <td><select id="inputState" class="form-select" name="schedule_DAY" value="{{ib.schedule_DAY}}"
                 [disabled]="disableSchedule">
-                <option selected>Choose...</option>
+                <option  selected>Choose...</option>
                 <option value="Sunday">Sunday</option>
                 <option value="Monday">Monday</option>
                 <option value="Tuesday">Tuesday</option>
@@ -100,13 +100,13 @@
               <select id="inputState" class="form-select" name="schedule_DAY"
                 [(ngModel)]="appointmentSchedule.schedule_DAY">
                 <option selected>Choose...</option>
-                <option value="Sunday">Sunday</option>
-                <option value="Monday">Monday</option>
-                <option value="Tuesday">Tuesday</option>
-                <option value="Wednesday">Wednesday</option>
-                <option value="Thruesday">Thruesday</option>
-                <option value="Friday">Friday</option>
-                <option value="Saturday">Saturday</option>
+                <option *ngIf="isDayThere[0]" value="Sunday">Sunday</option>
+                <option *ngIf="isDayThere[1]" value="Monday">Monday</option>
+                <option *ngIf="isDayThere[2]" value="Tuesday">Tuesday</option>
+                <option *ngIf="isDayThere[3]" value="Wednesday">Wednesday</option>
+                <option *ngIf="isDayThere[4]" value="Thruesday">Thruesday</option>
+                <option *ngIf="isDayThere[5]" value="Friday">Friday</option>
+                <option *ngIf="isDayThere[6]" value="Saturday">Saturday</option>
               </select>
             </td>
             <td>

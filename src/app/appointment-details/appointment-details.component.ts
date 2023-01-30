@@ -23,8 +23,31 @@ export class AppointmentDetailsComponent implements OnInit {
   constructor(private router: Router, private dservice: DoctorService, private pservice: PatientService, private aservice: AppointmentService) { }
 
   ngOnInit(): void {
+    this.searchKey=null;
     this.showSearch = false;
     this.mainTable = true;
+    if(localStorage.getItem("current_user_type")=="PATIENT"){
+      let resp=this.pservice.validateToken(localStorage.getItem("current_user"));
+      resp.subscribe(data=>{
+        if(data=='false'){
+          localStorage.removeItem("current_user");
+          localStorage.removeItem("user_email");
+          localStorage.removeItem("current_user_type");
+          this.router.navigateByUrl("error-message/TOKEN EXPRIERED. PLEASE LOGIN AGAIN.");
+        }
+      })
+    }
+    else if(localStorage.getItem("current_user_type")=="DOCTOR"){
+      let resp=this.dservice.doDoctorvalidateToken(localStorage.getItem("current_user"));
+      resp.subscribe(data=>{
+        if(data=='false'){
+          localStorage.removeItem("current_user");
+          localStorage.removeItem("user_email");
+          localStorage.removeItem("current_user_type");
+          this.router.navigateByUrl("error-message/TOKEN EXPRIERED. PLEASE LOGIN AGAIN.");
+        }
+      })
+    }
 
     if (localStorage.getItem("current_user") != null && localStorage.getItem("user_email") != null && localStorage.getItem("current_user_type") != null) {
       if (localStorage.getItem("current_user_type") == "DOCTOR") {
