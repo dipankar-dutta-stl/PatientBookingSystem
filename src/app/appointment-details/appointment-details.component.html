@@ -31,7 +31,7 @@
 
   </div>
 
-  <table *ngIf="mainTable" class="table table table-striped table-bordered">
+  <table *ngIf="mainTable" class="table table table-striped table-bordered" >
     <thead class="bg-primary text-light">
       <tr>
         <th class="p-3" scope="col">#</th>
@@ -42,10 +42,10 @@
         <th class="p-3" scope="col">DAY</th>
         <th class="p-3" scope="col">TIME</th>
         <th class="p-3" scope="col">STATUS</th>
-        <th class="p-3" *ngIf="isDoctor" scope="col">ACTION</th>
+        <th class="p-3" scope="col">ACTION</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="adetails">
       <tr *ngFor="let a of appdetails;index as i">
         <th class="p-3" scope="row">{{i+1}}</th>
         <td class="p-3">{{a.first_NAME}}&nbsp;{{a.last_NAME}}</td>
@@ -58,7 +58,7 @@
             class="badge bg-success">{{a.appointment_CONFRIMED}}</span></td>
         <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span
             class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
-        <td class="p-3 text-center" *ngIf="isDoctor"><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED'" class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
+        <td class="p-3 text-center" ><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED' && isDoctor" class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
             [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')"><img class="custom-img"
               src="/assets/images/check.png"></button>
           <button class="custom-btn" (click)="downloadPdf(a)"><img class="custom-img" src="/assets/images/pdf.png"></button>

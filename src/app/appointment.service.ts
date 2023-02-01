@@ -25,7 +25,7 @@ export class AppointmentService {
     return this.http.put("http://localhost:8003/api/v1/appointment/update/"+id,{responseType:'json'});
   }
 
-  generatePdf(adeatils:ADetails){
-    return this.http.post("http://localhost:8003/api/v1/appointment/download/pdf",adeatils,{responseType:'arraybuffer'})
-  }
+  // generatePdf(adeatils:ADetails){
+  //   return this.http.post("http://localhost:8003/api/v1/appointment/download/pdf",adeatils,{responseType:'arraybuffer'})
+  // }
 }

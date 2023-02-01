@@ -6,6 +6,9 @@ import { PatientService } from '../patient.service';
 import { Doctor } from '../models/Doctor';
 import { Patient } from '../models/Patient';
 import { ADetails } from '../models/ADetails';
+import jsPDF from 'jspdf';
+import jspdf from 'jspdf';
+import autoTable from 'jspdf-autotable';
 @Component({
   selector: 'app-appointment-details',
   templateUrl: './appointment-details.component.html',
@@ -23,13 +26,13 @@ export class AppointmentDetailsComponent implements OnInit {
   constructor(private router: Router, private dservice: DoctorService, private pservice: PatientService, private aservice: AppointmentService) { }
 
   ngOnInit(): void {
-    this.searchKey=null;
+    this.searchKey = null;
     this.showSearch = false;
     this.mainTable = true;
-    if(localStorage.getItem("current_user_type")=="PATIENT"){
-      let resp=this.pservice.validateToken(localStorage.getItem("current_user"));
-      resp.subscribe(data=>{
-        if(data=='false'){
+    if (localStorage.getItem("current_user_type") == "PATIENT") {
+      let resp = this.pservice.validateToken(localStorage.getItem("current_user"));
+      resp.subscribe(data => {
+        if (data == 'false') {
           localStorage.removeItem("current_user");
           localStorage.removeItem("user_email");
           localStorage.removeItem("current_user_type");
@@ -37,10 +40,10 @@ export class AppointmentDetailsComponent implements OnInit {
         }
       })
     }
-    else if(localStorage.getItem("current_user_type")=="DOCTOR"){
-      let resp=this.dservice.doDoctorvalidateToken(localStorage.getItem("current_user"));
-      resp.subscribe(data=>{
-        if(data=='false'){
+    else if (localStorage.getItem("current_user_type") == "DOCTOR") {
+      let resp = this.dservice.doDoctorvalidateToken(localStorage.getItem("current_user"));
+      resp.subscribe(data => {
+        if (data == 'false') {
           localStorage.removeItem("current_user");
           localStorage.removeItem("user_email");
           localStorage.removeItem("current_user_type");
@@ -122,11 +125,170 @@ export class AppointmentDetailsComponent implements OnInit {
     this.searchKey = null;
   }
 
-  downloadPdf(ad:ADetails){
-    // let resp=this.aservice.generatePdf(ad);
-    // resp.subscribe(data=>{
-    //   console.log(data);
-    // })
+  downloadPdf(ad: ADetails) {
+    if (localStorage.getItem("current_user_type") == 'DOCTOR') {
+      this.generatePdfForDoctor(ad);
+    }else if(localStorage.getItem("current_user_type") == 'PATIENT'){
+      this.generatePdfForPatient(ad);
+    }
   }
 
+
+  generatePdfForDoctor(ad: ADetails) {
+
+    const doc = new jsPDF()
+
+    autoTable(doc, {
+      body: [
+        [{ content: 'APPOINTMENT DETAILS', colSpan: 2, rowSpan: 1, styles: { halign: 'center' } }],
+      ],
+    })
+
+    autoTable(doc, {
+      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columns: [
+        { header: 'PATIENT`S DETAILS', dataKey: 'europe' },
+      ],
+    })
+
+    autoTable(doc, {
+      // head: [['Name', 'Address', 'Mobile','Email','Day','Time']],
+      columnStyles: {
+        0: { cellWidth: 40 },
+        1: { cellWidth: 143 },
+        // etc
+      },
+      body: [
+        ["NAME: ", `${ad.first_NAME + ' ' + ad.last_NAME}`.toUpperCase()],
+        ["MOBILE NO: ", `${ad.mobile_NO}`],
+        ["EMAIL ID: ", `${ad.email}`.toUpperCase()],
+        ["ADDRESS: ", `${ad.address}`.toUpperCase()],
+      ],
+    })
+
+    autoTable(doc, {
+      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columns: [
+        { header: 'DOCTOR DETAILS', dataKey: 'europe' },
+      ],
+    })
+
+    autoTable(doc, {
+      // head: [['Name', 'Address', 'Mobile','Email','Day','Time']],
+      columnStyles: {
+        0: { cellWidth: 40 },
+        1: { cellWidth: 143 },
+        // etc
+      },
+      body: [
+        ["NAME: ", `${this.doctor.dd.first_NAME + ' ' + this.doctor.dd.last_NAME}`.toUpperCase()],
+        ["MOBILE NO: ", `${this.doctor.dd.mobile_NO}`],
+        ["EMAIL ID: ", `${this.doctor.dd.email_ID}`.toUpperCase()],
+        ["ADDRESS: ", `${this.doctor.dd.chembar_ADDRESS}`.toUpperCase()],
+      ],
+    })
+
+    autoTable(doc, {
+      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columns: [
+        { header: 'APPOINTMNET SLOT DETAILS', dataKey: 'europe' },
+      ],
+    })
+
+    autoTable(doc, {
+      // head: [['Name', 'Address', 'Mobile','Email','Day','Time']],
+      columnStyles: {
+        0: { cellWidth: 40  },
+        1: { cellWidth: 143 },
+        // etc
+      },
+      
+      body: [
+        ["APPOINTMENT`S DAY: ", `${ad.a_DAY}`.toUpperCase()],
+        ["APPOINTMENT`S TIME: ", `${ad.a_TIME}`],
+        ["APPOINTMENT`S STATUS: ", `${ad.appointment_CONFRIMED}`.toUpperCase()]
+      ],
+    })
+
+    doc.save('appointment.pdf')
+  }
+
+
+
+  generatePdfForPatient(ad: ADetails) {
+    const doc = new jsPDF()
+
+    autoTable(doc, {
+      body: [
+        [{ content: 'APPOINTMENT DETAILS', colSpan: 2, rowSpan: 1, styles: { halign: 'center' } }],
+      ],
+    })
+
+    autoTable(doc, {
+      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columns: [
+        { header: 'DOCTOR`S DETAILS', dataKey: 'europe' },
+      ],
+    })
+    autoTable(doc, {
+      // head: [['Name', 'Address', 'Mobile','Email','Day','Time']],
+      columnStyles: {
+        0: { cellWidth: 40 },
+        1: { cellWidth: 143 },
+        // etc
+      },
+      body: [
+        ["NAME: ", `${ad.first_NAME + ' ' + ad.last_NAME}`.toUpperCase()],
+        ["MOBILE NO: ", `${ad.mobile_NO}`],
+        ["EMAIL ID: ", `${ad.email}`.toUpperCase()],
+        ["ADDRESS: ", `${ad.address}`.toUpperCase()],
+      ],
+    })
+
+    autoTable(doc, {
+      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columns: [
+        { header: 'PATIENT`s DETAILS', dataKey: 'europe' },
+      ],
+    })
+
+    autoTable(doc, {
+      // head: [['Name', 'Address', 'Mobile','Email','Day','Time']],
+      columnStyles: {
+        0: { cellWidth: 40 },
+        1: { cellWidth: 143 },
+        // etc
+      },
+      body: [
+        ["NAME: ", `${this.patient.patientDetails.first_NAME + ' ' + this.patient.patientDetails.last_NAME}`.toUpperCase()],
+        ["MOBILE NO: ", `${this.patient.patientDetails.mobile_NO}`],
+        ["EMAIL ID: ", `${this.patient.patientDetails.email_ID}`.toUpperCase()],
+        ["ADDRESS: ", `${this.patient.patientDetails.address}`.toUpperCase()],
+      ],
+    })
+
+    autoTable(doc, {
+      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columns: [
+        { header: 'APPOINTMNET SLOT DETAILS', dataKey: 'europe' },
+      ],
+    })
+
+    autoTable(doc, {
+      // head: [['Name', 'Address', 'Mobile','Email','Day','Time']],
+      columnStyles: {
+        0: { cellWidth: 40  },
+        1: { cellWidth: 143 },
+        // etc
+      },
+      
+      body: [
+        ["APPOINTMENT`S DAY: ", `${ad.a_DAY}`.toUpperCase()],
+        ["APPOINTMENT`S TIME: ", `${ad.a_TIME}`],
+        ["APPOINTMENT`S STATUS: ", `${ad.appointment_CONFRIMED}`.toUpperCase()]
+      ],
+    })
+
+    doc.save('appointment.pdf')
+  }
 }
