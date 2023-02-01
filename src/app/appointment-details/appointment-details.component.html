@@ -61,7 +61,7 @@
         <td class="p-3 text-center" *ngIf="isDoctor"><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED'" class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
             [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')"><img class="custom-img"
               src="/assets/images/check.png"></button>
-          <button class="custom-btn"><img class="custom-img" src="/assets/images/pdf.png"></button>
+          <button class="custom-btn" (click)="downloadPdf(a)"><img class="custom-img" src="/assets/images/pdf.png"></button>
         </td>
       </tr>
     </tbody>
@@ -100,7 +100,7 @@
         <td class="p-3" *ngIf="isDoctor"><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED'" class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
             [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')"><img class="custom-img"
               src="/assets/images/check.png"></button>
-          <button class="custom-btn"><img class="custom-img" src="/assets/images/pdf.png"></button>
+          <button class="custom-btn" (click)="downloadPdf(a)"><img class="custom-img" src="/assets/images/pdf.png"></button>
         </td>
       </tr>
     </tbody>

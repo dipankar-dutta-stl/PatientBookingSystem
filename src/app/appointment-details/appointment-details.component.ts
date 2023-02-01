@@ -122,4 +122,11 @@ export class AppointmentDetailsComponent implements OnInit {
     this.searchKey = null;
   }
 
+  downloadPdf(ad:ADetails){
+    // let resp=this.aservice.generatePdf(ad);
+    // resp.subscribe(data=>{
+    //   console.log(data);
+    // })
+  }
+
 }

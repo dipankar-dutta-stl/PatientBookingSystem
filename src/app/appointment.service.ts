@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppointmentDetails } from './models/AppointmentDetails';
+import { ADetails } from './models/ADetails';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +22,10 @@ export class AppointmentService {
   }
 
   acceptAppointmentById(id:String){
-    return this.http.put("http://localhost:8003/api/v1/appointment/update/"+id,{});
+    return this.http.put("http://localhost:8003/api/v1/appointment/update/"+id,{responseType:'json'});
+  }
+
+  generatePdf(adeatils:ADetails){
+    return this.http.post("http://localhost:8003/api/v1/appointment/download/pdf",adeatils,{responseType:'arraybuffer'})
   }
 }
