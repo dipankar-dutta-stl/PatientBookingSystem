@@ -105,4 +105,48 @@
       </tr>
     </tbody>
   </table>
+
+  <h2 class="display-4 text-center py-5">My Details</h2>
+
+  <table *ngIf="isDoctor==true" class="table table table-striped table-bordered">
+    <thead class="bg-primary text-light">
+      <tr>
+        <th class="p-3" scope="col">NAME</th>
+        <th class="p-3" scope="col">ADDRESS</th>
+        <th class="p-3" scope="col">MOBILE</th>
+        <th class="p-3" scope="col">EMAIL</th>
+        <th class="p-3" scope="col">ACCOUNT TYPE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="p-3">{{doctor.dd.first_NAME}}&nbsp;{{doctor.dd.last_NAME}}</td>
+        <td class="p-3">{{doctor.dd.chembar_ADDRESS}}</td>
+        <td class="p-3">{{doctor.dd.mobile_NO}}</td>
+        <td class="p-3">{{doctor.dd.email_ID}}</td>
+        <td class="p-3">DOCTOR</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table *ngIf="isDoctor==false" class="table table table-striped table-bordered">
+    <thead class="bg-primary text-light">
+      <tr>
+        <th class="p-3" scope="col">NAME</th>
+        <th class="p-3" scope="col">ADDRESS</th>
+        <th class="p-3" scope="col">MOBILE</th>
+        <th class="p-3" scope="col">EMAIL</th>
+        <th class="p-3" scope="col">ACCOUNT TYPE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="p-3">{{patient.patientDetails.first_NAME}}&nbsp;{{patient.patientDetails.last_NAME}}</td>
+        <td class="p-3">{{patient.patientDetails.address}}</td>
+        <td class="p-3">{{patient.patientDetails.mobile_NO}}</td>
+        <td class="p-3">{{patient.patientDetails.email_ID}}</td>
+        <td class="p-3">PATIENT</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
