@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Patient } from '../models/Patient';
 import { AppointmentDetails } from '../models/AppointmentDetails';
+import { AppointmentSchedule } from '../models/AppointmentSchedule';
 @Component({
   selector: 'app-book-appointment',
   templateUrl: './book-appointment.component.html',
@@ -16,6 +17,8 @@ export class BookAppointmentComponent implements OnInit {
   doctor: Doctor = new Doctor();
   id: String;
   patient: Patient = new Patient();
+  slotEmpty:Boolean=true;
+  appointmentSchedule:AppointmentSchedule[]=[];
   appoimentDetails: AppointmentDetails = new AppointmentDetails();
   constructor(private dservice: DoctorService, private pervice: PatientService, private aservice: AppointmentService, private aroute: ActivatedRoute, private router: Router) { }
 
@@ -29,6 +32,19 @@ export class BookAppointmentComponent implements OnInit {
       resp.subscribe(data => {
         if (data != null) {
           this.doctor = <Doctor>data;
+          for(let aps of this.doctor.as){
+            let resp=this.aservice.getAppointmentBySlot(aps.id);
+            resp.subscribe(data=>{
+              if(data=="NOT FOUND"){
+                this.appointmentSchedule.push(aps);
+                this.slotEmpty=false; 
+              }
+              
+
+              
+            });
+          }
+          
 
         }
         else {

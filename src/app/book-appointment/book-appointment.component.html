@@ -27,7 +27,7 @@
                                         <div>
                                             <h5 class="card-title">Choose Your Slot</h5>
                                             <div class="card-text justify-content-end">
-                                                <div *ngFor="let a of doctor.as" class="form-check">
+                                                <div *ngFor="let a of appointmentSchedule" class="form-check">
                                                     <input class="form-check-input" type="radio" id="gridCheck"
                                                         name="appointment_SCHEDULE_ID"
                                                         [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
@@ -37,6 +37,10 @@
                                                         TO
                                                         <b>{{a.schedule_TIME_END}}</b>
                                                     </label>
+                                                </div>
+                                                <div *ngIf="slotEmpty" class="alert alert-danger" role="alert">
+                                                    ALL SLOTS ARE BOOKED.<br>
+                                                    WAIT UNTILL NEW SLOTS ARE ALLOCATED.
                                                 </div>
                                             </div>
                                         </div>
