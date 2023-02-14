@@ -44,8 +44,6 @@ export class BookAppointmentComponent implements OnInit {
               
             });
           }
-          
-
         }
         else {
           this.router.navigateByUrl("error-message/" + "ERROR");

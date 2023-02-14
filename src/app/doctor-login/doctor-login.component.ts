@@ -45,12 +45,6 @@ export class DoctorLoginComponent implements OnInit {
 
     });
 
-
-
-
-
-
-
   }
 
 }

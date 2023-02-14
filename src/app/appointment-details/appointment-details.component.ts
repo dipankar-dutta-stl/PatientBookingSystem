@@ -145,9 +145,9 @@ export class AppointmentDetailsComponent implements OnInit {
     })
 
     autoTable(doc, {
-      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columnStyles: { p: { halign: 'center' } }, // European countries centered
       columns: [
-        { header: 'PATIENT`S DETAILS', dataKey: 'europe' },
+        { header: 'PATIENT`S DETAILS', dataKey: 'p' },
       ],
     })
 
@@ -167,9 +167,9 @@ export class AppointmentDetailsComponent implements OnInit {
     })
 
     autoTable(doc, {
-      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columnStyles: { d: { halign: 'center' } }, // European countries centered
       columns: [
-        { header: 'DOCTOR DETAILS', dataKey: 'europe' },
+        { header: 'DOCTOR DETAILS', dataKey: 'd' },
       ],
     })
 
@@ -189,9 +189,9 @@ export class AppointmentDetailsComponent implements OnInit {
     })
 
     autoTable(doc, {
-      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columnStyles: { a: { halign: 'center' } }, // European countries centered
       columns: [
-        { header: 'APPOINTMNET SLOT DETAILS', dataKey: 'europe' },
+        { header: 'APPOINTMNET SLOT DETAILS', dataKey: 'a' },
       ],
     })
 
@@ -225,9 +225,9 @@ export class AppointmentDetailsComponent implements OnInit {
     })
 
     autoTable(doc, {
-      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columnStyles: { d: { halign: 'center' } }, // European countries centered
       columns: [
-        { header: 'DOCTOR`S DETAILS', dataKey: 'europe' },
+        { header: 'DOCTOR`S DETAILS', dataKey: 'd' },
       ],
     })
     autoTable(doc, {
@@ -246,9 +246,9 @@ export class AppointmentDetailsComponent implements OnInit {
     })
 
     autoTable(doc, {
-      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columnStyles: { p: { halign: 'center' } }, // European countries centered
       columns: [
-        { header: 'PATIENT`s DETAILS', dataKey: 'europe' },
+        { header: 'PATIENT`s DETAILS', dataKey: 'p' },
       ],
     })
 
@@ -268,9 +268,9 @@ export class AppointmentDetailsComponent implements OnInit {
     })
 
     autoTable(doc, {
-      columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      columnStyles: { a: { halign: 'center' } }, // European countries centered
       columns: [
-        { header: 'APPOINTMNET SLOT DETAILS', dataKey: 'europe' },
+        { header: 'APPOINTMNET SLOT DETAILS', dataKey: 'a' },
       ],
     })
 
