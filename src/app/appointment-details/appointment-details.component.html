@@ -59,9 +59,9 @@
         <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span
             class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
         <td class="p-3 text-center" ><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED' && isDoctor" class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
-            [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')"><img class="custom-img"
-              src="/assets/images/check.png"></button>
-          <button class="custom-btn" (click)="downloadPdf(a)"><img class="custom-img" src="/assets/images/pdf.png"></button>
+            [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')" title="Accept Appointment"><img class="custom-img"
+              src="/assets/images/check.png"></button><span *ngIf="(a.appointment_CONFRIMED=='NOT CONFRIMED') && isDoctor"> |</span>
+          <button class="custom-btn" (click)="downloadPdf(a)" title="Download PDF"><img class="custom-img" src="/assets/images/pdf.png"></button>
         </td>
       </tr>
     </tbody>
@@ -97,10 +97,10 @@
             class="badge bg-success">{{a.appointment_CONFRIMED}}</span></td>
         <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span
             class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
-        <td class="p-3" ><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED' && isDoctor" class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
-            [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')"><img class="custom-img"
-              src="/assets/images/check.png"></button>
-          <button class="custom-btn" (click)="downloadPdf(a)"><img class="custom-img" src="/assets/images/pdf.png"></button>
+        <td class="p-3 text-center" ><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED' && isDoctor" class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
+            [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')" title="Accept Appointment"><img class="custom-img"
+              src="/assets/images/check.png"></button><span *ngIf="(a.appointment_CONFRIMED=='NOT CONFRIMED') && isDoctor"> |</span>
+          <button class="custom-btn" (click)="downloadPdf(a)" title="Download PDF"><img class="custom-img" src="/assets/images/pdf.png"></button>
         </td>
       </tr>
     </tbody>

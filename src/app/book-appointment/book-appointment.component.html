@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <div class="container">
                                 <div class="row h-200 ">
-                                    <div class="col-md-8">
+                                    <div class="col-md-7">
                                         <h5 class="card-title"><span>Dr. {{doctor.dd.first_NAME}}
                                                 &nbsp;{{doctor.dd.last_NAME}}
                                             </span></h5>
@@ -23,19 +23,19 @@
                                                     {{doctor.dd.visiting_PRICE}}</b></span></p>
 
                                     </div>
-                                    <div class="col-md-4 text-right">
+                                    <div class="col-md-5 text-right">
                                         <div>
                                             <h5 class="card-title">Choose Your Slot</h5>
                                             <div class="card-text justify-content-end">
-                                                <div *ngFor="let a of appointmentSchedule" class="form-check">
+                                                <div *ngFor="let a of appointmentSchedule" class="form-check p-1">
                                                     <input class="form-check-input" type="radio" id="gridCheck"
                                                         name="appointment_SCHEDULE_ID"
                                                         [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
                                                         value="{{a.id}}">
                                                     <label class="form-check-label" for="gridCheck">
-                                                        <b>{{a.schedule_DAY}}</b> FROM <b>{{a.schedule_TIME_START}}</b>
+                                                        <b class="badge  text-bg-primary">{{a.schedule_DAY}}</b> FROM <b class="badge text-bg-primary">{{a.schedule_TIME_START}}</b>
                                                         TO
-                                                        <b>{{a.schedule_TIME_END}}</b>
+                                                        <b class="badge text-bg-primary">{{a.schedule_TIME_END}}</b>
                                                     </label>
                                                 </div>
                                                 <div *ngIf="slotEmpty" class="alert alert-danger" role="alert">
