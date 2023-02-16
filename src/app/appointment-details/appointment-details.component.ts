@@ -19,6 +19,7 @@ export class AppointmentDetailsComponent implements OnInit {
   patient: Patient = new Patient();
   appdetails: ADetails = new ADetails();
   tempList: ADetails[] = [];
+  appointmentID:String;
   isDoctor: Boolean;
   searchKey: String;
   showSearch: Boolean = false;
@@ -101,6 +102,21 @@ export class AppointmentDetailsComponent implements OnInit {
     this.ngOnInit();
   }
 
+  deleteAppointment(id:String){
+    let resp=this.aservice.doDeleteAppointmentById(id);
+    resp.subscribe(data=>{
+      if(data=="APPOINTMENT DELETED"){
+        this.ngOnInit();
+      }else{
+        this.router.navigateByUrl("error-message/"+"ERROR WHILE DELETEING.")
+      }
+    })
+  }
+
+  setDeleteAppointmentId(id:String){
+    this.appointmentID=id;
+  }
+
   searchAppointment() {
 
     this.tempList = [];
@@ -128,7 +144,7 @@ export class AppointmentDetailsComponent implements OnInit {
   downloadPdf(ad: ADetails) {
     if (localStorage.getItem("current_user_type") == 'DOCTOR') {
       this.generatePdfForDoctor(ad);
-    }else if(localStorage.getItem("current_user_type") == 'PATIENT'){
+    } else if (localStorage.getItem("current_user_type") == 'PATIENT') {
       this.generatePdfForPatient(ad);
     }
   }
@@ -198,11 +214,11 @@ export class AppointmentDetailsComponent implements OnInit {
     autoTable(doc, {
       // head: [['Name', 'Address', 'Mobile','Email','Day','Time']],
       columnStyles: {
-        0: { cellWidth: 40  },
+        0: { cellWidth: 40 },
         1: { cellWidth: 143 },
         // etc
       },
-      
+
       body: [
         ["APPOINTMENT`S DAY: ", `${ad.a_DAY}`.toUpperCase()],
         ["APPOINTMENT`S TIME: ", `${ad.a_TIME}`],
@@ -277,11 +293,11 @@ export class AppointmentDetailsComponent implements OnInit {
     autoTable(doc, {
       // head: [['Name', 'Address', 'Mobile','Email','Day','Time']],
       columnStyles: {
-        0: { cellWidth: 40  },
+        0: { cellWidth: 40 },
         1: { cellWidth: 143 },
         // etc
       },
-      
+
       body: [
         ["APPOINTMENT`S DAY: ", `${ad.a_DAY}`.toUpperCase()],
         ["APPOINTMENT`S TIME: ", `${ad.a_TIME}`],

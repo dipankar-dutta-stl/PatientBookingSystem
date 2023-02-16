@@ -31,7 +31,7 @@
 
   </div>
 
-  <table *ngIf="mainTable" class="table table table-striped table-bordered" >
+  <table *ngIf="mainTable" class="table table table-striped table-bordered">
     <thead class="bg-primary text-light">
       <tr>
         <th class="p-3" scope="col">#</th>
@@ -58,10 +58,20 @@
             class="badge bg-success">{{a.appointment_CONFRIMED}}</span></td>
         <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span
             class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
-        <td class="p-3 text-center" ><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED' && isDoctor" class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
-            [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')" title="Accept Appointment"><img class="custom-img"
-              src="/assets/images/check.png"></button><span *ngIf="(a.appointment_CONFRIMED=='NOT CONFRIMED') && isDoctor"> |</span>
-          <button class="custom-btn" (click)="downloadPdf(a)" title="Download PDF"><img class="custom-img" src="/assets/images/pdf.png"></button>
+        <td class="p-2 text-center"><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED' && isDoctor" class="custom-btn"
+            (click)="acceptAppointment(a.appointment_ID)" [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')"
+            title="Accept Appointment"><img class="custom-img" src="/assets/images/check.png"></button><span
+            *ngIf="(a.appointment_CONFRIMED=='NOT CONFRIMED') && isDoctor"> |</span>
+          <button class="custom-btn" (click)="downloadPdf(a)" title="Download PDF"><img class="custom-img"
+              src="/assets/images/pdf.png"></button>
+          <span *ngIf="(a.appointment_CONFRIMED=='NOT CONFRIMED')"> |</span>
+          <span *ngIf="(a.appointment_CONFRIMED=='CONFRIMED') && isDoctor"> |</span>
+          <button class="custom-btn" (click)="setDeleteAppointmentId(a.appointment_ID)" title="Delete Appointment"
+            *ngIf="(a.appointment_CONFRIMED!='CONFRIMED') && isDoctor==false" data-bs-toggle="modal"
+            data-bs-target="#deleteAppointmentModal"><img class="custom-img" src="/assets/images/delete.png"></button>
+          <button class="custom-btn" (click)="setDeleteAppointmentId(a.appointment_ID)" title="Delete Appointment"
+            *ngIf="isDoctor" data-bs-toggle="modal" data-bs-target="#deleteAppointmentModal"><img class="custom-img"
+              src="/assets/images/delete.png"></button>
         </td>
       </tr>
     </tbody>
@@ -97,10 +107,20 @@
             class="badge bg-success">{{a.appointment_CONFRIMED}}</span></td>
         <td *ngIf="a.appointment_CONFRIMED=='NOT CONFRIMED'" class="p-3"><span
             class="badge bg-danger">{{a.appointment_CONFRIMED}}</span></td>
-        <td class="p-3 text-center" ><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED' && isDoctor" class="custom-btn" (click)="acceptAppointment(a.appointment_ID)"
-            [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')" title="Accept Appointment"><img class="custom-img"
-              src="/assets/images/check.png"></button><span *ngIf="(a.appointment_CONFRIMED=='NOT CONFRIMED') && isDoctor"> |</span>
-          <button class="custom-btn" (click)="downloadPdf(a)" title="Download PDF"><img class="custom-img" src="/assets/images/pdf.png"></button>
+        <td class="p-2 text-center"><button *ngIf="a.appointment_CONFRIMED!='CONFRIMED' && isDoctor" class="custom-btn"
+            (click)="acceptAppointment(a.appointment_ID)" [disabled]="(a.appointment_CONFRIMED=='CONFRIMED')"
+            title="Accept Appointment"><img class="custom-img" src="/assets/images/check.png"></button><span
+            *ngIf="(a.appointment_CONFRIMED=='NOT CONFRIMED') && isDoctor"> |</span>
+          <button class="custom-btn" (click)="downloadPdf(a)" title="Download PDF"><img class="custom-img"
+              src="/assets/images/pdf.png"></button>
+          <span *ngIf="(a.appointment_CONFRIMED=='NOT CONFRIMED')"> |</span>
+          <span *ngIf="(a.appointment_CONFRIMED=='CONFRIMED') && isDoctor"> |</span>
+          <button class="custom-btn" (click)="setDeleteAppointmentId(a.appointment_ID)" title="Delete Appointment"
+            *ngIf="(a.appointment_CONFRIMED!='CONFRIMED') && isDoctor==false" data-bs-toggle="modal"
+            data-bs-target="#deleteAppointmentModal"><img class="custom-img" src="/assets/images/delete.png"></button>
+          <button class="custom-btn" (click)="setDeleteAppointmentId(a.appointment_ID)" title="Delete Appointment"
+            *ngIf="isDoctor" data-bs-toggle="modal" data-bs-target="#deleteAppointmentModal"><img class="custom-img"
+              src="/assets/images/delete.png"></button>
         </td>
       </tr>
     </tbody>
@@ -149,4 +169,27 @@
       </tr>
     </tbody>
   </table>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteAppointmentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Appointment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Once you delete the Appointment,
+          booking amount will be refunded 2-3 bussiness days.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="deleteAppointment(appointmentID)" class="btn btn-danger"
+            data-bs-dismiss="modal">Delete Appointment</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

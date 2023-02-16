@@ -29,4 +29,8 @@ export class AppointmentService {
   getAppointmentBySlot(id:String){
     return this.http.get("http://localhost:8003/api/v1/appointment/slot/"+id,{responseType:'text'});
   }
+
+  doDeleteAppointmentById(id:String){
+    return this.http.delete("http://localhost:8003/api/v1/appointment/delete/"+id,{responseType:'text'});
+  }
 }
