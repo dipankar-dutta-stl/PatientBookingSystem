@@ -18,7 +18,7 @@
                     <div class="col-md-4 text-end alert alert-primary"  style="margin-left:5rem;">
                         <h5>Available Slot</h5>
                         <div style="overflow-y:scroll; height:100px;">
-                            <p *ngIf="checkSchedule(appScheduleSunday,doctor.dd.id)" class="badge bg-success">SUNDAY</p>
+                            <p *ngIf="checkSchedule(appScheduleSunday,doctor.dd.id)" class="badge bg-dark text-white text-center rounded-pill">SUNDAY</p>
                             <div>
                                 <p *ngFor="let appointment of getSchedule(appScheduleSunday,doctor.dd.id)"
                                     class="badge bg-primary text-white"
@@ -28,7 +28,7 @@
                                 </p>
                             </div>
 
-                            <p *ngIf="checkSchedule(appScheduleMonday,doctor.dd.id)" class="badge bg-success">MONDAY</p>
+                            <p *ngIf="checkSchedule(appScheduleMonday,doctor.dd.id)" class="badge bg-dark text-white text-center rounded-pill">MONDAY</p>
                             <div>
                                 <p *ngFor="let appointment of getSchedule(appScheduleMonday,doctor.dd.id)"
                                     class="badge bg-primary text-white"
@@ -38,7 +38,7 @@
                                 </p>
                             </div>
 
-                            <p *ngIf="checkSchedule(appScheduleTuesday,doctor.dd.id)" class="badge bg-success">TUESDAY
+                            <p *ngIf="checkSchedule(appScheduleTuesday,doctor.dd.id)" class="badge bg-dark text-white text-center rounded-pill">TUESDAY
                             </p>
                             <div>
                                 <p *ngFor="let appointment of getSchedule(appScheduleTuesday,doctor.dd.id)"
@@ -49,7 +49,7 @@
                                 </p>
                             </div>
 
-                            <p *ngIf="checkSchedule(appScheduleWednesday,doctor.dd.id)" class="badge bg-success">
+                            <p *ngIf="checkSchedule(appScheduleWednesday,doctor.dd.id)" class="badge bg-dark text-white text-center rounded-pill">
                                 WEDNESDAY</p>
                             <div>
                                 <p *ngFor="let appointment of getSchedule(appScheduleWednesday,doctor.dd.id)"
@@ -60,7 +60,7 @@
                                 </p>
                             </div>
 
-                            <p *ngIf="checkSchedule(appScheduleThursday,doctor.dd.id)" class="badge bg-success">THURSDAY
+                            <p *ngIf="checkSchedule(appScheduleThursday,doctor.dd.id)" class="badge bg-dark text-white text-center rounded-pill">THURSDAY
                             </p>
                             <div>
                                 <p *ngFor="let appointment of getSchedule(appScheduleThursday,doctor.dd.id)"
@@ -71,7 +71,7 @@
                                 </p>
                             </div>
 
-                            <p *ngIf="checkSchedule(appScheduleFriday,doctor.dd.id)" class="badge bg-success">FRIDAY</p>
+                            <p *ngIf="checkSchedule(appScheduleFriday,doctor.dd.id)" class=" badge bg-dark text-white text-center rounded-pill">FRIDAY</p>
                             <div>
                                 <p *ngFor="let appointment of getSchedule(appScheduleFriday,doctor.dd.id)"
                                     class="badge bg-primary text-white"
@@ -81,7 +81,7 @@
                                 </p>
                             </div>
 
-                            <p *ngIf="checkSchedule(appScheduleSaturday,doctor.dd.id)" class="badge bg-success">SATURDAY
+                            <p *ngIf="checkSchedule(appScheduleSaturday,doctor.dd.id)" class="badge bg-dark text-white text-center rounded-pill">SATURDAY
                             </p>
                             <div>
                                 <p *ngFor="let appointment of getSchedule(appScheduleSaturday,doctor.dd.id)"

@@ -1,3 +1,9 @@
 .display-4{
     text-decoration: underline;
 }
+
+.custom-control-input:checked{
+    color: #fff;
+    border-color: #080808;
+    background-color: black;
+}

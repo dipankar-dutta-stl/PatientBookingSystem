@@ -20,6 +20,13 @@ export class BookAppointmentComponent implements OnInit {
   slotEmpty:Boolean=true;
   appointmentSchedule:AppointmentSchedule[]=[];
   appoimentDetails: AppointmentDetails = new AppointmentDetails();
+  appScheduleSunday: AppointmentSchedule[] = [];
+  appScheduleMonday: AppointmentSchedule[] = [];
+  appScheduleTuesday: AppointmentSchedule[] = [];
+  appScheduleWednesday: AppointmentSchedule[] = [];
+  appScheduleThursday: AppointmentSchedule[] = [];
+  appScheduleFriday: AppointmentSchedule[] = [];
+  appScheduleSaturday: AppointmentSchedule[] = [];
   constructor(private dservice: DoctorService, private pervice: PatientService, private aservice: AppointmentService, private aroute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -37,6 +44,27 @@ export class BookAppointmentComponent implements OnInit {
             resp.subscribe(data=>{
               if(data=="NOT FOUND"){
                 this.appointmentSchedule.push(aps);
+                if(aps.schedule_DAY=="Sunday"){
+                  this.appScheduleSunday.push(aps);
+                }
+                 if(aps.schedule_DAY=="Monday"){
+                  this.appScheduleMonday.push(aps);
+                }
+                 if(aps.schedule_DAY=="Tuesday"){
+                  this.appScheduleTuesday.push(aps);
+                }
+                 if(aps.schedule_DAY=="Wednesday"){
+                  this.appScheduleWednesday.push(aps);
+                }
+                 if(aps.schedule_DAY=="Thursday"){
+                  this.appScheduleThursday.push(aps);
+                }
+                 if(aps.schedule_DAY=="Friday"){
+                  this.appScheduleFriday.push(aps);
+                }
+                 if(aps.schedule_DAY=="Saturday"){
+                  this.appScheduleSaturday.push(aps);
+                }
                 this.slotEmpty=false; 
               }
               
