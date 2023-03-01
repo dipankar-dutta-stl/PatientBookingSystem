@@ -39,6 +39,18 @@
       <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"
         [(ngModel)]="doctor.dd.chembar_ADDRESS" name="address" [disabled]="disable">
     </div>
+    <div class="col-4">
+      <label for="inputAddress" class="form-label">City</label>
+      <input type="text" class="form-control" id="inputAddress" [(ngModel)]="doctor.dd.city" name="city" [disabled]="disable">
+    </div>
+    <div class="col-4">
+      <label for="inputAddress" class="form-label">State</label>
+      <input type="text" class="form-control" id="inputAddress" [(ngModel)]="doctor.dd.state" name="state" [disabled]="disable">
+    </div>
+    <div class="col-4">
+      <label for="inputAddress" class="form-label">Pin</label>
+      <input type="text" class="form-control" id="inputAddress" [(ngModel)]="doctor.dd.pin" name="pin" [disabled]="disable">
+    </div>
     <div class="col-md-6">
       <label for="inputSpecialization" class="form-label">Specialization</label>
       <select id="inputSpecialization" class="form-select" [(ngModel)]="doctor.dd.specialization" name="specialization"

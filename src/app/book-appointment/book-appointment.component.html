@@ -1,248 +1,234 @@
 <div class="container p-10 mt-5" style="margin-bottom:10%;">
-    <div class="text-center">
-        <h1 class="display-4">BOOK YOUR APPOINTMENT</h1>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <form>
-                        <div class="card-header bg-primary text-white">
-                            <h2>DOCTOR DETAILS</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="container">
-                                <div class="row alert alert-success" >
-                                    <div class="col-md-7 " >
-                                        <h5 class="card-title"><span>Dr. {{doctor.dd.first_NAME}}
-                                                &nbsp;{{doctor.dd.last_NAME}}
-                                            </span></h5>
-                                        <p class="card-text"> {{doctor.dd.specialization}}</p>
-                                        <p class="card-text">{{doctor.dd.chembar_ADDRESS}}</p>
-                                        <p class="card-test"><span class="badge rounded-pill bg-success text-white"><b>₹
-                                                    {{doctor.dd.visiting_PRICE}}</b></span></p>
-
-                                    </div>
-                                    <div class="col-md-5 text-right">
-                                        <div>
-                                            <h5 class="card-title">Choose Your Slot</h5>
-                                            <div class="card-text justify-content-end"
-                                                style="overflow-y:scroll; height:200px;">
-                                                <div *ngIf="appScheduleSunday.length>0"
-                                                    class="badge bg-dark text-white text-center"
-                                                    style="text-align: center;border-radius:5px;">SUNDAY
-                                                </div>
-                                                <div class="mt-1">
-                                                    <div *ngFor="let appointment of appScheduleSunday"
-                                                        class="badge bg-primary text-white text-center justify-content-center"
-                                                        style="width:80px;margin:5px;display:inline-block;font-size:16px;">
-                                                        <input class="form-check-input custom-control-input" style="height:10px;width:10px;"
-                                                            type="radio" id="{{appointment.id}}" name="appointment_SCHEDULE_ID"
-                                                            [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
-                                                            value="{{appointment.id}}">
-                                                        <label class="form-check-label"
-                                                            for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-
-                                                <div *ngIf="appScheduleMonday.length>0"
-                                                    class="badge bg-dark text-white text-center"
-                                                    style="text-align: center;border-radius:5px;">MONDAY
-                                                </div>
-                                                <div class="mt-1">
-                                                    <div *ngFor="let appointment of appScheduleMonday"
-                                                        class="badge bg-primary text-white text-center justify-content-center"
-                                                        style="width:80px;margin:5px;display:inline-block;font-size:16px;">
-                                                        <input class="form-check-input custom-control-input"
-                                                            type="radio" id="{{appointment.id}}" name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
-                                                            [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
-                                                            value="{{appointment.id}}">
-                                                        <label class="form-check-label"
-                                                            for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-
-                                                <div *ngIf="appScheduleTuesday.length>0"
-                                                    class="badge bg-dark text-white text-center"
-                                                    style="text-align: center;border-radius:5px;">TUESDAY
-                                                </div>
-                                                <div class="mt-1">
-                                                    <div *ngFor="let appointment of appScheduleTuesday"
-                                                        class="badge bg-primary text-white text-center justify-content-center"
-                                                        style="width:80px;margin:5px;;display:inline-block;font-size:16px;">
-                                                        <input class="form-check-input custom-control-input"
-                                                            type="radio" id="{{appointment.id}}" name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
-                                                            [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
-                                                            value="{{appointment.id}}">
-                                                        <label class="form-check-label"
-                                                            for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div *ngIf="appScheduleWednesday.length>0"
-                                                    class="badge bg-dark text-white text-center"
-                                                    style="text-align: center;border-radius:5px;">WEDNESDAY
-                                                </div>
-                                                <div class="mt-1">
-                                                    <div *ngFor="let appointment of appScheduleWednesday"
-                                                        class="badge bg-primary text-white text-center justify-content-center"
-                                                        style="width:80px;margin:5px;display:inline-block;font-size:16px;">
-                                                        <input class="form-check-input custom-control-input"
-                                                            type="radio" id="{{appointment.id}}" name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
-                                                            [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
-                                                            value="{{appointment.id}}">
-                                                        <label class="form-check-label"
-                                                            for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div *ngIf="appScheduleThursday.length>0"
-                                                    class="badge bg-dark text-white text-center"
-                                                    style="text-align: center;border-radius:5px;">THURSDAY
-                                                </div>
-                                                <div class="mt-1">
-                                                    <div *ngFor="let appointment of appScheduleThursday"
-                                                        class="badge bg-primary text-white text-center justify-content-center"
-                                                        style="width:80px;margin:5px;display:inline-block;font-size:16px;">
-                                                        <input class="form-check-input custom-control-input"
-                                                            type="radio" id="{{appointment.id}}" name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
-                                                            [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
-                                                            value="{{appointment.id}}">
-                                                        <label class="form-check-label"
-                                                            for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div *ngIf="appScheduleFriday.length>0"
-                                                    class="badge bg-dark text-white text-center"
-                                                    style="text-align: center;border-radius:5px;">FRIDAY
-                                                </div>
-                                                <div class="mt-1">
-                                                    <div *ngFor="let appointment of appScheduleFriday"
-                                                        class="badge bg-primary text-white text-center justify-content-center"
-                                                        style="width:80px;margin:5px;display:inline-block;font-size:16px;">
-                                                        <input class="form-check-input custom-control-input"
-                                                            type="radio" id="{{appointment.id}}" name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
-                                                            [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
-                                                            value="{{appointment.id}}">
-                                                        <label class="form-check-label"
-                                                            for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div *ngIf="appScheduleSaturday.length>0"
-                                                    class="badge bg-dark text-white text-center"
-                                                    style="text-align: center;border-radius:5px;">SATURDAY
-                                                </div>
-                                                <div class="mt-1">
-                                                    <div *ngFor="let appointment of appScheduleSaturday"
-                                                        class="badge bg-primary text-white text-center justify-content-center"
-                                                        style="width:80px;margin:5px;display:inline-block;font-size:16px;">
-                                                        <input class="form-check-input custom-control-input"
-                                                            type="radio" id="{{appointment.id}}" name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
-                                                            [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
-                                                            value="{{appointment.id}}">
-                                                        <label class="form-check-label"
-                                                            for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <!-- <div *ngFor="let a of appointmentSchedule" class="form-check p-1">
-                                                    <input class="form-check-input" type="radio" id="gridCheck"
-                                                        name="appointment_SCHEDULE_ID"
-                                                        [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
-                                                        value="{{a.id}}">
-                                                    <label class="form-check-label" for="gridCheck">
-                                                        <b class="badge  text-bg-primary">{{a.schedule_DAY}}</b> FROM <b class="badge text-bg-primary">{{a.schedule_TIME_START}}</b>
-                                                        TO
-                                                        <b class="badge text-bg-primary">{{a.schedule_TIME_END}}</b>
-                                                    </label>
-                                                </div> -->
-                                                <div *ngIf="slotEmpty" class="alert alert-danger" role="alert">
-                                                    ALL SLOTS ARE BOOKED.<br>
-                                                    <br>
-                                                    WAIT UNTILL NEW SLOTS ARE ALLOCATED.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <button class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"
-                                            [disabled]="appoimentDetails.appointment_SCHEDULE_ID==null">Book
-                                            Appointment</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </form>
-                </div>
+  <div class="text-center">
+    <h1 class="display-4">BOOK YOUR APPOINTMENT</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <form>
+            <div class="card-header bg-primary text-white">
+              <h2>DOCTOR DETAILS</h2>
             </div>
-            <div class="col-md-4 ">
-                <div class="card">
-                    <form>
-                        <div class="card-header bg-primary text-white">
-                            <h2>YOUR DETAILS</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="container">
-                                <div class="row h-200 alert alert-primary " style="overflow-y:scroll; height:300px;">
-                                    <div class="col-md-9">
-                                        <h5 class="card-title"><span>{{patient.patientDetails.first_NAME}} &nbsp;
-                                                {{patient.patientDetails.last_NAME}}
-                                            </span></h5>
-                                        <p class="card-text">{{patient.patientDetails.gender}}</p>
-                                        <p class="card-text"><b>{{patient.patientDetails.mobile_NO}}</b></p>
-                                        <p class="card-text">{{patient.patientDetails.email_ID}}</p>
-                                        <p class="card-text">{{patient.patientDetails.address}}</p>
-                                    </div>
-                                    <!-- <div class="col-md-4 text-right">
-                                        <div>
+            <div class="card-body">
+              <div class="container">
+                <div class="row alert alert-success">
+                  <div class="col-md-7 ">
+                    <h2 class="card-title">Dr. {{doctor.dd.first_NAME}}
+                      &nbsp;{{doctor.dd.last_NAME}}
+                    </h2>
+                    <p class="card-text"> {{doctor.dd.specialization}}</p>
+                    <p class="card-text">{{doctor.dd.chembar_ADDRESS}}</p>
+                    <p class="card-test"><span class="badge rounded-pill bg-success text-white"><b>₹
+                          {{doctor.dd.visiting_PRICE}}</b></span></p>
 
-                                        </div>
-                                    </div> -->
-                                </div>
-                            </div>
-
+                  </div>
+                  <div class="col-md-5">
+                    <div>
+                      <h2 class="card-title">Choose Your Slot</h2>
+                      <div class="card-text" style="overflow-y:scroll; height:200px;">
+                        <div *ngIf="appScheduleSunday.length>0" class="badge bg-dark text-white text-center"
+                          style="text-align: center;border-radius:5px;">SUNDAY
                         </div>
-                    </form>
+                        <div class="mt-1">
+                          <div *ngFor="let appointment of appScheduleSunday"
+                            class="badge bg-primary text-white text-center justify-content-center"
+                            style="width:80px;margin:5px;display:inline-block;font-size:16px;">
+                            <input class="form-check-input custom-control-input" style="height:10px;width:10px;"
+                              type="radio" id="{{appointment.id}}" name="appointment_SCHEDULE_ID"
+                              [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID" value="{{appointment.id}}">
+                            <label class="form-check-label" for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
+                            </label>
+                          </div>
+                        </div>
+
+
+                        <div *ngIf="appScheduleMonday.length>0" class="badge bg-dark text-white text-center"
+                          style="text-align: center;border-radius:5px;">MONDAY
+                        </div>
+                        <div class="mt-1">
+                          <div *ngFor="let appointment of appScheduleMonday"
+                            class="badge bg-primary text-white text-center justify-content-center"
+                            style="width:80px;margin:5px;display:inline-block;font-size:16px;">
+                            <input class="form-check-input custom-control-input" type="radio" id="{{appointment.id}}"
+                              name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
+                              [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID" value="{{appointment.id}}">
+                            <label class="form-check-label" for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
+                            </label>
+                          </div>
+                        </div>
+
+
+                        <div *ngIf="appScheduleTuesday.length>0" class="badge bg-dark text-white text-center"
+                          style="text-align: center;border-radius:5px;">TUESDAY
+                        </div>
+                        <div class="mt-1">
+                          <div *ngFor="let appointment of appScheduleTuesday"
+                            class="badge bg-primary text-white text-center justify-content-center"
+                            style="width:80px;margin:5px;;display:inline-block;font-size:16px;">
+                            <input class="form-check-input custom-control-input" type="radio" id="{{appointment.id}}"
+                              name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
+                              [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID" value="{{appointment.id}}">
+                            <label class="form-check-label" for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
+                            </label>
+                          </div>
+                        </div>
+
+                        <div *ngIf="appScheduleWednesday.length>0" class="badge bg-dark text-white text-center"
+                          style="text-align: center;border-radius:5px;">WEDNESDAY
+                        </div>
+                        <div class="mt-1">
+                          <div *ngFor="let appointment of appScheduleWednesday"
+                            class="badge bg-primary text-white text-center justify-content-center"
+                            style="width:80px;margin:5px;display:inline-block;font-size:16px;">
+                            <input class="form-check-input custom-control-input" type="radio" id="{{appointment.id}}"
+                              name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
+                              [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID" value="{{appointment.id}}">
+                            <label class="form-check-label" for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
+                            </label>
+                          </div>
+                        </div>
+
+                        <div *ngIf="appScheduleThursday.length>0" class="badge bg-dark text-white text-center"
+                          style="text-align: center;border-radius:5px;">THURSDAY
+                        </div>
+                        <div class="mt-1">
+                          <div *ngFor="let appointment of appScheduleThursday"
+                            class="badge bg-primary text-white text-center justify-content-center"
+                            style="width:80px;margin:5px;display:inline-block;font-size:16px;">
+                            <input class="form-check-input custom-control-input" type="radio" id="{{appointment.id}}"
+                              name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
+                              [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID" value="{{appointment.id}}">
+                            <label class="form-check-label" for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
+                            </label>
+                          </div>
+                        </div>
+
+                        <div *ngIf="appScheduleFriday.length>0" class="badge bg-dark text-white text-center"
+                          style="text-align: center;border-radius:5px;">FRIDAY
+                        </div>
+                        <div class="mt-1">
+                          <div *ngFor="let appointment of appScheduleFriday"
+                            class="badge bg-primary text-white text-center justify-content-center"
+                            style="width:80px;margin:5px;display:inline-block;font-size:16px;">
+                            <input class="form-check-input custom-control-input" type="radio" id="{{appointment.id}}"
+                              name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
+                              [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID" value="{{appointment.id}}">
+                            <label class="form-check-label" for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
+                            </label>
+                          </div>
+                        </div>
+
+                        <div *ngIf="appScheduleSaturday.length>0" class="badge bg-dark text-white text-center"
+                          style="text-align: center;border-radius:5px;">SATURDAY
+                        </div>
+                        <div class="mt-1">
+                          <div *ngFor="let appointment of appScheduleSaturday"
+                            class="badge bg-primary text-white text-center justify-content-center"
+                            style="width:80px;margin:5px;display:inline-block;font-size:16px;">
+                            <input class="form-check-input custom-control-input" type="radio" id="{{appointment.id}}"
+                              name="appointment_SCHEDULE_ID" style="height:10px;width:10px;"
+                              [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID" value="{{appointment.id}}">
+                            <label class="form-check-label" for="{{appointment.id}}">{{appointment.schedule_TIME_START}}
+                            </label>
+                          </div>
+                        </div>
+                        <!-- <div *ngFor="let a of appointmentSchedule" class="form-check p-1">
+                            <input class="form-check-input" type="radio" id="gridCheck"
+                                name="appointment_SCHEDULE_ID"
+                                [(ngModel)]="appoimentDetails.appointment_SCHEDULE_ID"
+                                value="{{a.id}}">
+                            <label class="form-check-label" for="gridCheck">
+                                <b class="badge  text-bg-primary">{{a.schedule_DAY}}</b> FROM <b class="badge text-bg-primary">{{a.schedule_TIME_START}}</b>
+                                TO
+                                <b class="badge text-bg-primary">{{a.schedule_TIME_END}}</b>
+                            </label>
+                        </div> -->
+                        <div *ngIf="slotEmpty" class="alert alert-danger" role="alert">
+                          ALL SLOTS ARE BOOKED.<br>
+                          <br>
+                          WAIT UNTILL NEW SLOTS ARE ALLOCATED.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                      [disabled]="appoimentDetails.appointment_SCHEDULE_ID==null">Book
+                      Appointment
+                    </button>
+                  </div>
+
+                  <!-- <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label style="color: black;">Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myFilter">
+                    <mat-hint style="color: black;">YYYY-MM-DD</mat-hint>
+                    <mat-datepicker #picker style="display:none;"></mat-datepicker>
+                  </mat-form-field>
+                  <button mat-raised-button (click)="picker.open()">Open</button> -->
                 </div>
+              </div>
 
             </div>
+
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4 ">
+        <div class="card">
+          <form>
+            <div class="card-header bg-primary text-white">
+              <h2>YOUR DETAILS</h2>
+            </div>
+            <div class="card-body">
+              <div class="container">
+                <div class="row h-200 alert alert-primary " style="overflow-y:scroll; height:300px;">
+                  <div class="col-md-9">
+                    <h2 class="card-title"><span>{{patient.patientDetails.first_NAME}} &nbsp;
+                        {{patient.patientDetails.last_NAME}}
+                      </span></h2>
+                    <p class="card-text">{{patient.patientDetails.gender}}</p>
+                    <p class="card-text"><b>{{patient.patientDetails.mobile_NO}}</b></p>
+                    <p class="card-text">{{patient.patientDetails.email_ID}}</p>
+                    <p class="card-text">{{patient.patientDetails.address}}</p>
+                  </div>
+                  <!-- <div class="col-md-4 text-right">
+                      <div>
+
+                      </div>
+                  </div> -->
+                </div>
+              </div>
+
+            </div>
+          </form>
         </div>
 
+      </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Make Payment</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <h1><span class="badge bg-primary">₹ {{doctor.dd.visiting_PRICE}}</span></h1>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" aria-label="Close"
-                        (click)="bookAppointment()">Make Payment</button>
-                </div>
-            </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Make Payment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body text-center">
+          <h1><span class="badge bg-primary">₹ {{doctor.dd.visiting_PRICE}}</span></h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" aria-label="Close"
+            (click)="bookAppointment()">Make Payment
+          </button>
+        </div>
+      </div>
     </div>
-
+  </div>
 
 
 </div>

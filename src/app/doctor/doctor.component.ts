@@ -3,6 +3,7 @@ import { Doctor } from '../models/Doctor';
 import { DoctorService } from '../doctor.service';
 import { Router } from '@angular/router';
 import { AppointmentSchedule } from '../models/AppointmentSchedule';
+import { LocationService } from '../location.service';
 @Component({
   selector: 'app-doctor',
   templateUrl: './doctor.component.html',
@@ -10,7 +11,7 @@ import { AppointmentSchedule } from '../models/AppointmentSchedule';
 })
 export class DoctorComponent implements OnInit {
 
-  constructor(private dService: DoctorService, private router: Router) { }
+  constructor(private dService: DoctorService, private router: Router, private location: LocationService) { }
 
   alldoctors: Doctor;
   appScheduleSunday: AppointmentSchedule[] = [];
@@ -21,8 +22,12 @@ export class DoctorComponent implements OnInit {
   appScheduleFriday: AppointmentSchedule[] = [];
   appScheduleSaturday: AppointmentSchedule[] = [];
 
+  myCity: String;
+  docSpcial: String = "Select Specialization";
+
   ngOnInit(): void {
-    let resp = this.dService.doGetAllDoctor();
+    this.myCity = localStorage.getItem("loc");
+    let resp = this.dService.doGetDoctorByLocation(this.myCity);
     resp.subscribe(data => {
       this.alldoctors = <Doctor>data;
       for (let d in this.alldoctors) {
@@ -51,7 +56,6 @@ export class DoctorComponent implements OnInit {
         }
       }
     });
-    console.log(this.appScheduleSunday);
   }
 
   doBookAppointment(id: String) {
@@ -78,12 +82,107 @@ export class DoctorComponent implements OnInit {
   }
 
   getSchedule(appS: AppointmentSchedule[], did: String) {
-    let schedule:AppointmentSchedule[]=[];
+    let schedule: AppointmentSchedule[] = [];
     for (let as of appS) {
       if (as.doctor_ID == did) {
         schedule.push(as);
       }
     }
     return schedule;
+  }
+
+  setSpecialization(spcl: String) {
+    this.docSpcial = spcl;
+  }
+
+  resetSpecilization() {
+    this.docSpcial = "Select Specialization";
+  }
+
+  setCurrentLocation() {
+    let locResp = this.location.getMyLocation();
+    locResp.subscribe(data => {
+      this.myCity = data["city"];
+    })
+  }
+
+  filterDoctorbyLocationAndSpecialization() {
+    this.resetSlots();
+    if (this.docSpcial != "Select Specialization") {
+      console.log(this.docSpcial);
+      let resp = this.dService.doGetDoctorByLocationAndSpecialization(this.myCity, this.docSpcial);
+      resp.subscribe(data => {
+        this.alldoctors = <Doctor>data;
+        console.log(data);
+        for (let d in this.alldoctors) {
+          for (let a in this.alldoctors[d].as) {
+            if (this.alldoctors[d].as[a].schedule_DAY == "Sunday") {
+              this.appScheduleSunday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Monday") {
+              this.appScheduleMonday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Tuesday") {
+              this.appScheduleTuesday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Wednesday") {
+              this.appScheduleWednesday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Thursday") {
+              this.appScheduleThursday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Friday") {
+              this.appScheduleFriday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Saturday") {
+              this.appScheduleSaturday.push(this.alldoctors[d].as[a]);
+            }
+          }
+        }
+      });
+    }
+    else {
+      this.resetSlots();
+      let resp = this.dService.doGetDoctorByLocation(this.myCity);
+      resp.subscribe(data => {
+        this.alldoctors = <Doctor>data;
+        for (let d in this.alldoctors) {
+          for (let a in this.alldoctors[d].as) {
+            if (this.alldoctors[d].as[a].schedule_DAY == "Sunday") {
+              this.appScheduleSunday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Monday") {
+              this.appScheduleMonday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Tuesday") {
+              this.appScheduleTuesday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Wednesday") {
+              this.appScheduleWednesday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Thursday") {
+              this.appScheduleThursday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Friday") {
+              this.appScheduleFriday.push(this.alldoctors[d].as[a]);
+            }
+            if (this.alldoctors[d].as[a].schedule_DAY == "Saturday") {
+              this.appScheduleSaturday.push(this.alldoctors[d].as[a]);
+            }
+          }
+        }
+      });
+    }
+  }
+
+
+  resetSlots() {
+    this.appScheduleSunday = [];
+    this.appScheduleMonday = [];
+    this.appScheduleTuesday = [];
+    this.appScheduleWednesday = [];
+    this.appScheduleThursday = [];
+    this.appScheduleFriday = [];
+    this.appScheduleSaturday = [];
   }
 }

@@ -3,6 +3,7 @@ import { Doctor } from '../models/Doctor';
 import { DoctorService } from '../doctor.service';
 import { Router } from '@angular/router';
 import { AppointmentSchedule } from '../models/AppointmentSchedule';
+import { LocationService } from '../location.service';
 @Component({
   selector: 'app-doctor-signup',
   templateUrl: './doctor-signup.component.html',
@@ -13,9 +14,15 @@ export class DoctorSignupComponent implements OnInit {
   doctor: Doctor = new Doctor();
   appointmentSchedule: AppointmentSchedule = new AppointmentSchedule();
   confrimPassword: String;
-  constructor(private dservice: DoctorService, private router: Router) { }
+  constructor(private dservice: DoctorService,private location:LocationService, private router: Router) { }
 
   ngOnInit(): void {
+    let resp=this.location.getMyLocation();
+    resp.subscribe(data=>{
+      this.doctor.dd.city=data["city"];
+      this.doctor.dd.state=data["region"];
+      this.doctor.dd.pin=data["postal"];
+    })
   }
 
   submitDetails(): void {

@@ -3,19 +3,34 @@
 
 
 @font-face {
-    font-family:VarelaRound-Regular;
+    font-family: VarelaRound-Regular;
     src: url("/assets/font/VarelaRound-Regular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family:ConcertOne-Regular;
+    font-family: ConcertOne-Regular;
     src: url("/assets/font/ConcertOne-Regular.ttf") format("truetype");
 }
 
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'VarelaRound-Regular';
+@font-face {
+    font-family:SyneMono-Regular;
+    src: url("/assets/font/SyneMono-Regular.ttf") format('truetype');
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'VarelaRound-Regular';
+}
+
+
+html,
+body {
+    height: 100%;
+    font-family:'VarelaRound-Regular';
+}
+
+h1,h2,h5,h6{
+    font-family:'VarelaRound-Regular';
+}

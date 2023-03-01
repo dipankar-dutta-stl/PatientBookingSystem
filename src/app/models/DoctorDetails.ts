@@ -9,4 +9,7 @@ export class DoctorDetails{
     specialization:String;
     visiting_PRICE:String;
     tags:String;
+    city:String;
+    state:String;
+    pin:String;
 }

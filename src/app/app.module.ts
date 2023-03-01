@@ -20,7 +20,12 @@ import { PatientProfileComponent } from './patient-profile/patient-profile.compo
 import { DoctorComponent } from './doctor/doctor.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule} from "@angular/material/datepicker";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,14 @@ import { AppointmentDetailsComponent } from './appointment-details/appointment-d
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatInputModule,
+    
   ],
   providers: [PatientService],
   bootstrap: [AppComponent]
