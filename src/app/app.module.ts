@@ -27,6 +27,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,8 +56,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatNativeDateModule,
     MatButtonModule,
-    MatInputModule,
-    
+    MatInputModule,  
   ],
   providers: [PatientService],
   bootstrap: [AppComponent]

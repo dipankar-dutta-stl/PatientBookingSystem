@@ -1,8 +1,9 @@
-import { Component, OnInit, Output ,EventEmitter, ContentChildren} from '@angular/core';
+import { Component, OnInit, Output ,EventEmitter, ContentChildren, ChangeDetectorRef} from '@angular/core';
 import { PatientLoging } from '../models/PatientLogin';
 import { PatientService } from '../patient.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Router } from '@angular/router';
+import { OauthService } from '../oauth.service';
 @Component({
   selector: 'app-patient-login',
   templateUrl: './patient-login.component.html',
@@ -10,12 +11,14 @@ import { Router } from '@angular/router';
 })
 export class PatientLoginComponent implements OnInit {
 
-  @ContentChildren(NavbarComponent)
-  navbar:NavbarComponent;
+  // @ContentChildren(NavbarComponent)
+  // navbar:NavbarComponent;
   patient:PatientLoging=new PatientLoging();
-  constructor(private patientservice:PatientService,private route:Router) { }
+  constructor(private patientservice:PatientService,private route:Router,private oauthService:OauthService,private ref:ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    
+
     if(localStorage.getItem("current_user_type")=="PATIENT"){
       let resp=this.patientservice.validateToken(localStorage.getItem("current_user"));
       resp.subscribe(data=>{
@@ -38,8 +41,6 @@ export class PatientLoginComponent implements OnInit {
       localStorage.setItem("current_user_type","PATIENT");
       this.route.navigateByUrl("/");
     })
-
-
   }
 
 }
