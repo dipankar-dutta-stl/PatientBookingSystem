@@ -1,3 +1,4 @@
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component, OnInit ,Input} from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   @Input()user_email:String;
-  constructor(private route:Router) { }
+  constructor(private route:Router,private authService:SocialAuthService) { }
 
   ngOnInit(): void {
     if(localStorage.getItem("current_user")!=""){
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("user_email");
     localStorage.removeItem("current_user");
     localStorage.removeItem("current_user_type");
+    this.authService.signOut();
     this.route.navigateByUrl("/");
     this.ngOnInit();
   }

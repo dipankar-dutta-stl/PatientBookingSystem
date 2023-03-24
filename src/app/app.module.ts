@@ -26,7 +26,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-
+import { SocialLoginModule,SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -56,9 +57,27 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatNativeDateModule,
     MatButtonModule,
-    MatInputModule,  
+    MatInputModule,
+    SocialLoginModule  
   ],
-  providers: [PatientService],
+  providers: [PatientService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '648495058302-avodmp0hlcprnmlq8djaacm8v950vm23.apps.googleusercontent.com'
+            )
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

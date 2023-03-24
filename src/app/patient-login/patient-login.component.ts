@@ -4,6 +4,8 @@ import { PatientService } from '../patient.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Router } from '@angular/router';
 import { OauthService } from '../oauth.service';
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 @Component({
   selector: 'app-patient-login',
   templateUrl: './patient-login.component.html',
@@ -14,10 +16,17 @@ export class PatientLoginComponent implements OnInit {
   // @ContentChildren(NavbarComponent)
   // navbar:NavbarComponent;
   patient:PatientLoging=new PatientLoging();
-  constructor(private patientservice:PatientService,private route:Router,private oauthService:OauthService,private ref:ChangeDetectorRef) { }
+
+  user: SocialUser;
+  loggedIn: boolean;
+  constructor(private patientservice:PatientService,private route:Router,private authService:SocialAuthService) { }
 
   ngOnInit(): void {
-    
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+      console.log(this.user);
+    });
 
     if(localStorage.getItem("current_user_type")=="PATIENT"){
       let resp=this.patientservice.validateToken(localStorage.getItem("current_user"));
@@ -41,6 +50,11 @@ export class PatientLoginComponent implements OnInit {
       localStorage.setItem("current_user_type","PATIENT");
       this.route.navigateByUrl("/");
     })
+  }
+
+
+  signWithGoogle(){
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
 }
