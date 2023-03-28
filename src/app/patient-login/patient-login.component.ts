@@ -52,9 +52,4 @@ export class PatientLoginComponent implements OnInit {
     })
   }
 
-
-  signWithGoogle(){
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
-
 }
