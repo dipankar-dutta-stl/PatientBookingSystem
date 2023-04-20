@@ -1,4 +1,4 @@
-import { PatientDetails } from "./patientDetails";
+import { PatientDetails } from "./PatientDetails";
 import { PatientLoging } from "./PatientLogin";
 
 export class Patient{
