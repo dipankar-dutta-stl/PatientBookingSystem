@@ -161,7 +161,7 @@ export class AppointmentDetailsComponent implements OnInit {
     })
 
     autoTable(doc, {
-      columnStyles: { p: { halign: 'center' } }, // European countries centered
+      columnStyles: { p: { halign: 'center' } }, 
       columns: [
         { header: 'PATIENT`S DETAILS', dataKey: 'p' },
       ],
